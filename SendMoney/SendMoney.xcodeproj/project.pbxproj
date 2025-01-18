@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		802536D92D3AAA950063A9CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536D82D3AAA950063A9CE /* AppDelegate.swift */; };
 		802536DB2D3AAA950063A9CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536DA2D3AAA950063A9CE /* SceneDelegate.swift */; };
-		802536DD2D3AAA950063A9CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536DC2D3AAA950063A9CE /* ViewController.swift */; };
+		802536DD2D3AAA950063A9CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536DC2D3AAA950063A9CE /* LoginViewController.swift */; };
 		802536E02D3AAA950063A9CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802536DE2D3AAA950063A9CE /* Main.storyboard */; };
 		802536E32D3AAA950063A9CE /* SendMoney.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 802536E12D3AAA950063A9CE /* SendMoney.xcdatamodeld */; };
 		802536E52D3AAA960063A9CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802536E42D3AAA960063A9CE /* Assets.xcassets */; };
@@ -17,6 +17,15 @@
 		802536F32D3AAA960063A9CE /* SendMoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536F22D3AAA960063A9CE /* SendMoneyTests.swift */; };
 		802536FD2D3AAA960063A9CE /* SendMoneyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536FC2D3AAA960063A9CE /* SendMoneyUITests.swift */; };
 		802536FF2D3AAA960063A9CE /* SendMoneyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802536FE2D3AAA960063A9CE /* SendMoneyUITestsLaunchTests.swift */; };
+		804379A52D3B9E08006A1F7C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379A42D3B9E08006A1F7C /* BaseViewController.swift */; };
+		804379A82D3BA07E006A1F7C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379A72D3BA07E006A1F7C /* UIColor+Extension.swift */; };
+		804379AB2D3BA0AF006A1F7C /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379AA2D3BA0AF006A1F7C /* CustomColors.swift */; };
+		804379AE2D3BA3E2006A1F7C /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379AD2D3BA3E2006A1F7C /* BaseLabel.swift */; };
+		804379B12D3BA700006A1F7C /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379B02D3BA700006A1F7C /* LocalizationManager.swift */; };
+		804379B32D3BA758006A1F7C /* Notification+LanguageChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379B22D3BA758006A1F7C /* Notification+LanguageChange.swift */; };
+		804379B52D3BA91B006A1F7C /* English-Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 804379B42D3BA91B006A1F7C /* English-Localizable.strings */; };
+		804379B72D3BA92D006A1F7C /* Arabic-Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 804379B62D3BA92D006A1F7C /* Arabic-Localizable.strings */; };
+		804379B92D3BA991006A1F7C /* LocalizedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379B82D3BA991006A1F7C /* LocalizedString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +49,7 @@
 		802536D52D3AAA950063A9CE /* SendMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802536D82D3AAA950063A9CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802536DA2D3AAA950063A9CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		802536DC2D3AAA950063A9CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		802536DC2D3AAA950063A9CE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		802536DF2D3AAA950063A9CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		802536E22D3AAA950063A9CE /* SendMoney.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SendMoney.xcdatamodel; sourceTree = "<group>"; };
 		802536E42D3AAA960063A9CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +60,15 @@
 		802536F82D3AAA960063A9CE /* SendMoneyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendMoneyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		802536FC2D3AAA960063A9CE /* SendMoneyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyUITests.swift; sourceTree = "<group>"; };
 		802536FE2D3AAA960063A9CE /* SendMoneyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		804379A42D3B9E08006A1F7C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		804379A72D3BA07E006A1F7C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		804379AA2D3BA0AF006A1F7C /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		804379AD2D3BA3E2006A1F7C /* BaseLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		804379B02D3BA700006A1F7C /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		804379B22D3BA758006A1F7C /* Notification+LanguageChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+LanguageChange.swift"; sourceTree = "<group>"; };
+		804379B42D3BA91B006A1F7C /* English-Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "English-Localizable.strings"; sourceTree = "<group>"; };
+		804379B62D3BA92D006A1F7C /* Arabic-Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "Arabic-Localizable.strings"; sourceTree = "<group>"; };
+		804379B82D3BA991006A1F7C /* LocalizedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +119,19 @@
 		802536D72D3AAA950063A9CE /* SendMoney */ = {
 			isa = PBXGroup;
 			children = (
+				804379AF2D3BA6EC006A1F7C /* Localization */,
+				804379AC2D3BA3D1006A1F7C /* BaseClasses */,
+				804379A92D3BA09C006A1F7C /* Colors */,
+				804379A62D3BA054006A1F7C /* Extensions */,
 				802536D82D3AAA950063A9CE /* AppDelegate.swift */,
 				802536DA2D3AAA950063A9CE /* SceneDelegate.swift */,
-				802536DC2D3AAA950063A9CE /* ViewController.swift */,
+				802536DC2D3AAA950063A9CE /* LoginViewController.swift */,
 				802536DE2D3AAA950063A9CE /* Main.storyboard */,
 				802536E42D3AAA960063A9CE /* Assets.xcassets */,
 				802536E62D3AAA960063A9CE /* LaunchScreen.storyboard */,
 				802536E92D3AAA960063A9CE /* Info.plist */,
 				802536E12D3AAA950063A9CE /* SendMoney.xcdatamodeld */,
+				804379A42D3B9E08006A1F7C /* BaseViewController.swift */,
 			);
 			path = SendMoney;
 			sourceTree = "<group>";
@@ -128,6 +151,42 @@
 				802536FE2D3AAA960063A9CE /* SendMoneyUITestsLaunchTests.swift */,
 			);
 			path = SendMoneyUITests;
+			sourceTree = "<group>";
+		};
+		804379A62D3BA054006A1F7C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				804379A72D3BA07E006A1F7C /* UIColor+Extension.swift */,
+				804379B22D3BA758006A1F7C /* Notification+LanguageChange.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		804379A92D3BA09C006A1F7C /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				804379AA2D3BA0AF006A1F7C /* CustomColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		804379AC2D3BA3D1006A1F7C /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				804379AD2D3BA3E2006A1F7C /* BaseLabel.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		804379AF2D3BA6EC006A1F7C /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				804379B02D3BA700006A1F7C /* LocalizationManager.swift */,
+				804379B42D3BA91B006A1F7C /* English-Localizable.strings */,
+				804379B62D3BA92D006A1F7C /* Arabic-Localizable.strings */,
+				804379B82D3BA991006A1F7C /* LocalizedString.swift */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,9 +293,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804379B52D3BA91B006A1F7C /* English-Localizable.strings in Resources */,
 				802536E82D3AAA960063A9CE /* LaunchScreen.storyboard in Resources */,
 				802536E52D3AAA960063A9CE /* Assets.xcassets in Resources */,
 				802536E02D3AAA950063A9CE /* Main.storyboard in Resources */,
+				804379B72D3BA92D006A1F7C /* Arabic-Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,8 +322,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804379A52D3B9E08006A1F7C /* BaseViewController.swift in Sources */,
+				804379B12D3BA700006A1F7C /* LocalizationManager.swift in Sources */,
+				804379B92D3BA991006A1F7C /* LocalizedString.swift in Sources */,
 				802536E32D3AAA950063A9CE /* SendMoney.xcdatamodeld in Sources */,
-				802536DD2D3AAA950063A9CE /* ViewController.swift in Sources */,
+				804379AB2D3BA0AF006A1F7C /* CustomColors.swift in Sources */,
+				804379B32D3BA758006A1F7C /* Notification+LanguageChange.swift in Sources */,
+				802536DD2D3AAA950063A9CE /* LoginViewController.swift in Sources */,
+				804379A82D3BA07E006A1F7C /* UIColor+Extension.swift in Sources */,
+				804379AE2D3BA3E2006A1F7C /* BaseLabel.swift in Sources */,
 				802536D92D3AAA950063A9CE /* AppDelegate.swift in Sources */,
 				802536DB2D3AAA950063A9CE /* SceneDelegate.swift in Sources */,
 			);
