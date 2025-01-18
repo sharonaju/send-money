@@ -33,6 +33,16 @@
 		804379D22D3BC98B006A1F7C /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379D12D3BC98B006A1F7C /* LoginViewModel.swift */; };
 		804379D52D3BCC2D006A1F7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379D42D3BCC2D006A1F7C /* Constants.swift */; };
 		804379D82D3BD218006A1F7C /* SendMoneyFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379D72D3BD218006A1F7C /* SendMoneyFormViewController.swift */; };
+		804379DE2D3BD618006A1F7C /* sendMoney.json in Resources */ = {isa = PBXBuildFile; fileRef = 804379DD2D3BD618006A1F7C /* sendMoney.json */; };
+		804379E12D3BD6D4006A1F7C /* ServiceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379E02D3BD6D4006A1F7C /* ServiceDataManager.swift */; };
+		804379E42D3BD77E006A1F7C /* SendMoneyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379E32D3BD77E006A1F7C /* SendMoneyData.swift */; };
+		804379E62D3BF23E006A1F7C /* SendMoneyFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379E52D3BF23E006A1F7C /* SendMoneyFormViewModel.swift */; };
+		804379EA2D3BF751006A1F7C /* FormOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379E92D3BF751006A1F7C /* FormOptionsView.swift */; };
+		804379EC2D3BF777006A1F7C /* FormOptionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379EB2D3BF777006A1F7C /* FormOptionsView.xib */; };
+		804379F42D3C15C8006A1F7C /* FormOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379F22D3C15C8006A1F7C /* FormOptionsTableViewCell.swift */; };
+		804379F52D3C15C8006A1F7C /* FormOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379F32D3C15C8006A1F7C /* FormOptionsTableViewCell.xib */; };
+		804379F82D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379F62D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift */; };
+		804379F92D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +94,16 @@
 		804379D12D3BC98B006A1F7C /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		804379D42D3BCC2D006A1F7C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		804379D72D3BD218006A1F7C /* SendMoneyFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyFormViewController.swift; sourceTree = "<group>"; };
+		804379DD2D3BD618006A1F7C /* sendMoney.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sendMoney.json; sourceTree = "<group>"; };
+		804379E02D3BD6D4006A1F7C /* ServiceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDataManager.swift; sourceTree = "<group>"; };
+		804379E32D3BD77E006A1F7C /* SendMoneyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyData.swift; sourceTree = "<group>"; };
+		804379E52D3BF23E006A1F7C /* SendMoneyFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyFormViewModel.swift; sourceTree = "<group>"; };
+		804379E92D3BF751006A1F7C /* FormOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOptionsView.swift; sourceTree = "<group>"; };
+		804379EB2D3BF777006A1F7C /* FormOptionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormOptionsView.xib; sourceTree = "<group>"; };
+		804379F22D3C15C8006A1F7C /* FormOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormOptionsTableViewCell.swift; sourceTree = "<group>"; };
+		804379F32D3C15C8006A1F7C /* FormOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		804379F62D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormTextFieldTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +154,7 @@
 		802536D72D3AAA950063A9CE /* SendMoney */ = {
 			isa = PBXGroup;
 			children = (
+				804379DF2D3BD6AA006A1F7C /* Data */,
 				804379D32D3BCC1E006A1F7C /* Helpers */,
 				804379CF2D3BC96D006A1F7C /* ViewControllers */,
 				804379C42D3BB5C5006A1F7C /* CustomViews */,
@@ -148,6 +169,7 @@
 				802536E62D3AAA960063A9CE /* LaunchScreen.storyboard */,
 				802536E92D3AAA960063A9CE /* Info.plist */,
 				802536E12D3AAA950063A9CE /* SendMoney.xcdatamodeld */,
+				804379DD2D3BD618006A1F7C /* sendMoney.json */,
 			);
 			path = SendMoney;
 			sourceTree = "<group>";
@@ -211,8 +233,8 @@
 		804379C42D3BB5C5006A1F7C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				804379C52D3BB5F3006A1F7C /* FormTextFieldView.swift */,
-				804379C72D3BB605006A1F7C /* FormTextFieldView.xib */,
+				804379E82D3BF73F006A1F7C /* FormOptions */,
+				804379E72D3BF721006A1F7C /* FormTextField */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -246,9 +268,57 @@
 		804379D62D3BD1F5006A1F7C /* SendMoneyForm */ = {
 			isa = PBXGroup;
 			children = (
+				804379F12D3C15B5006A1F7C /* TableViewCells */,
 				804379D72D3BD218006A1F7C /* SendMoneyFormViewController.swift */,
+				804379E52D3BF23E006A1F7C /* SendMoneyFormViewModel.swift */,
 			);
 			path = SendMoneyForm;
+			sourceTree = "<group>";
+		};
+		804379DF2D3BD6AA006A1F7C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				804379E22D3BD761006A1F7C /* Models */,
+				804379E02D3BD6D4006A1F7C /* ServiceDataManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		804379E22D3BD761006A1F7C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				804379E32D3BD77E006A1F7C /* SendMoneyData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		804379E72D3BF721006A1F7C /* FormTextField */ = {
+			isa = PBXGroup;
+			children = (
+				804379C52D3BB5F3006A1F7C /* FormTextFieldView.swift */,
+				804379C72D3BB605006A1F7C /* FormTextFieldView.xib */,
+			);
+			path = FormTextField;
+			sourceTree = "<group>";
+		};
+		804379E82D3BF73F006A1F7C /* FormOptions */ = {
+			isa = PBXGroup;
+			children = (
+				804379E92D3BF751006A1F7C /* FormOptionsView.swift */,
+				804379EB2D3BF777006A1F7C /* FormOptionsView.xib */,
+			);
+			path = FormOptions;
+			sourceTree = "<group>";
+		};
+		804379F12D3C15B5006A1F7C /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				804379F22D3C15C8006A1F7C /* FormOptionsTableViewCell.swift */,
+				804379F32D3C15C8006A1F7C /* FormOptionsTableViewCell.xib */,
+				804379F62D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift */,
+				804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,11 +426,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804379F52D3C15C8006A1F7C /* FormOptionsTableViewCell.xib in Resources */,
+				804379EC2D3BF777006A1F7C /* FormOptionsView.xib in Resources */,
 				804379C82D3BB605006A1F7C /* FormTextFieldView.xib in Resources */,
 				804379C02D3BB2B9006A1F7C /* Localizable.strings in Resources */,
+				804379DE2D3BD618006A1F7C /* sendMoney.json in Resources */,
 				802536E82D3AAA960063A9CE /* LaunchScreen.storyboard in Resources */,
 				802536E52D3AAA960063A9CE /* Assets.xcassets in Resources */,
 				802536E02D3AAA950063A9CE /* Main.storyboard in Resources */,
+				804379F92D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,20 +462,26 @@
 				804379A52D3B9E08006A1F7C /* BaseViewController.swift in Sources */,
 				804379D52D3BCC2D006A1F7C /* Constants.swift in Sources */,
 				804379CE2D3BC626006A1F7C /* BaseButton.swift in Sources */,
+				804379E12D3BD6D4006A1F7C /* ServiceDataManager.swift in Sources */,
 				804379B12D3BA700006A1F7C /* LocalizationManager.swift in Sources */,
 				804379B92D3BA991006A1F7C /* LocalizedString.swift in Sources */,
+				804379F82D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift in Sources */,
 				804379D22D3BC98B006A1F7C /* LoginViewModel.swift in Sources */,
 				802536E32D3AAA950063A9CE /* SendMoney.xcdatamodeld in Sources */,
 				804379CA2D3BC16A006A1F7C /* BaseTextField.swift in Sources */,
 				804379AB2D3BA0AF006A1F7C /* CustomColors.swift in Sources */,
 				804379B32D3BA758006A1F7C /* Notification+LanguageChange.swift in Sources */,
+				804379E62D3BF23E006A1F7C /* SendMoneyFormViewModel.swift in Sources */,
 				802536DD2D3AAA950063A9CE /* LoginViewController.swift in Sources */,
+				804379EA2D3BF751006A1F7C /* FormOptionsView.swift in Sources */,
 				804379D82D3BD218006A1F7C /* SendMoneyFormViewController.swift in Sources */,
 				804379CC2D3BC1AB006A1F7C /* String+Extension.swift in Sources */,
+				804379F42D3C15C8006A1F7C /* FormOptionsTableViewCell.swift in Sources */,
 				804379A82D3BA07E006A1F7C /* UIColor+Extension.swift in Sources */,
 				804379AE2D3BA3E2006A1F7C /* BaseLabel.swift in Sources */,
 				802536D92D3AAA950063A9CE /* AppDelegate.swift in Sources */,
 				804379C62D3BB5F3006A1F7C /* FormTextFieldView.swift in Sources */,
+				804379E42D3BD77E006A1F7C /* SendMoneyData.swift in Sources */,
 				802536DB2D3AAA950063A9CE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

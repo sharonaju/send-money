@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormOptionsView" customModule="SendMoney" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="6KI-0x-Jnj"/>
+                <outlet property="formFieldView" destination="J64-lv-Yfb" id="hP2-4n-6T1"/>
+                <outlet property="selectedTitleLabel" destination="vW5-1W-P1Y" id="Akh-g2-978"/>
+                <outlet property="titleLabel" destination="XQ0-Hj-TwR" id="eE8-s9-lu7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zSs-5J-OYx">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ0-Hj-TwR" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="25"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J64-lv-Yfb">
+                            <rect key="frame" x="0.0" y="29" width="393" height="44"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW5-1W-P1Y" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                                    <rect key="frame" x="14" y="11.999999999999998" width="365" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMA-LX-fFP">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                    <connections>
+                                        <action selector="optionsButtonAction:" destination="-1" eventType="touchUpInside" id="vEc-QS-ha7"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="PMA-LX-fFP" secondAttribute="bottom" id="1KK-73-prI"/>
+                                <constraint firstItem="vW5-1W-P1Y" firstAttribute="centerY" secondItem="J64-lv-Yfb" secondAttribute="centerY" id="8nj-R3-Wkl"/>
+                                <constraint firstItem="PMA-LX-fFP" firstAttribute="leading" secondItem="J64-lv-Yfb" secondAttribute="leading" id="EEB-Hr-Fsc"/>
+                                <constraint firstAttribute="trailing" secondItem="PMA-LX-fFP" secondAttribute="trailing" id="U4o-33-3Nt"/>
+                                <constraint firstAttribute="trailing" secondItem="vW5-1W-P1Y" secondAttribute="trailing" constant="14" id="YmF-tL-3Rp"/>
+                                <constraint firstItem="PMA-LX-fFP" firstAttribute="top" secondItem="J64-lv-Yfb" secondAttribute="top" id="qJl-vx-3GN"/>
+                                <constraint firstAttribute="height" constant="44" id="rGL-sh-YMa"/>
+                                <constraint firstItem="vW5-1W-P1Y" firstAttribute="leading" secondItem="J64-lv-Yfb" secondAttribute="leading" constant="14" id="u8u-rY-5lX"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="zSs-5J-OYx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dqv-XQ-0th"/>
+                <constraint firstItem="zSs-5J-OYx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sDh-Mp-6md"/>
+                <constraint firstAttribute="bottom" secondItem="zSs-5J-OYx" secondAttribute="bottom" id="wE7-Bw-slZ"/>
+                <constraint firstAttribute="trailing" secondItem="zSs-5J-OYx" secondAttribute="trailing" id="zmm-xc-pwG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-54" y="20"/>
+        </view>
+    </objects>
+</document>
