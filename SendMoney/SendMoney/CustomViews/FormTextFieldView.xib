@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormTextFieldView" customModule="SendMoney" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="eyh-tw-V26"/>
+                <outlet property="errorLabel" destination="zie-sC-DO3" id="mwa-h7-Xdz"/>
+                <outlet property="textField" destination="Wgx-2q-gNd" id="BaU-iv-04B"/>
+                <outlet property="titleLabel" destination="Orn-Ak-GWc" id="8XS-YP-XxZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TXR-1d-Otu">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orn-Ak-GWc" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="20.333333333333332"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20.333333333333332" id="FVo-Yc-9Mp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wgx-2q-gNd" customClass="BaseTextField" customModule="SendMoney" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="24.333333333333329" width="393" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="b4z-hW-SEy"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zie-sC-DO3" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="72.333333333333329" width="393" height="17.666666666666671"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="TXR-1d-Otu" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="1cB-au-IrX"/>
+                <constraint firstAttribute="top" secondItem="TXR-1d-Otu" secondAttribute="top" id="Bsu-cb-zk3"/>
+                <constraint firstItem="TXR-1d-Otu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="XwL-uC-fxr"/>
+                <constraint firstAttribute="trailing" secondItem="TXR-1d-Otu" secondAttribute="trailing" id="mdb-vk-uN2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="11" y="20"/>
+        </view>
+    </objects>
+</document>

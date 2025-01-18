@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupNavigationBar()
         setupUI()
-        subscribeToLanguageChange()
+//        subscribeToLanguageChange()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -39,7 +39,9 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.prefersLargeTitles = false
-        addLanguageButton()
+        addTapGestureToHideKeyboard()
+        customizeBackButton()
+//        addLanguageButton()
     }
     
     // MARK: - Language
@@ -56,12 +58,14 @@ class BaseViewController: UIViewController {
     @objc private func languageSwitchTapped() {
         let newLanguage = Locale.current.language.languageCode?.identifier == "ar" ? "en" : "ar"
         LocalizationManager.shared.setLanguage(to: newLanguage)
+        
     }
     
     
     // MARK: - Listen to Language Change Notifications
     private func subscribeToLanguageChange() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUI), name: .languageDidChange, object: nil)
+        refreshUI()
     }
     
     @objc private func refreshUI() {
@@ -78,11 +82,25 @@ class BaseViewController: UIViewController {
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
     }
-    
+    private func customizeBackButton() {
+            let backButton = UIBarButtonItem()
+            backButton.title = ""
+            navigationItem.backBarButtonItem = backButton
+            navigationController?.navigationBar.tintColor = CustomColors.navigationTitleColor
+        }
     private func setupUI() {
         view.backgroundColor = CustomColors.backgroundColor
     }
     
+    private func addTapGestureToHideKeyboard() {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+            tapGesture.cancelsTouchesInView = false  // So that the gesture doesn't interfere with other controls like buttons
+            view.addGestureRecognizer(tapGesture)
+        }
+        
+        @objc private func handleTapGesture() {
+            view.endEditing(true)  // This will resign the first responder (hide the keyboard)
+        }
     /*
      // MARK: - Navigation
      

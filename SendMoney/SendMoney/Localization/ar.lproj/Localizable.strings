@@ -5,3 +5,8 @@
 "email" = "بريد إلكتروني";
 "password" = "كلمة المرور";
 "byProceedingYouAgreeToTerms" = "من خلال المتابعة، فإنك توافق أيضًا على شروط الخدمة وسياسة الخصوصية";
+"pleaseEnterEmail" = "Please enter email";
+"pleaseEnterValidEmail" = "Please enter a valid email";
+"pleaseEnterCorrectEmail" = "Please enter correct email address";
+"pleaseEnterPassword" = "Please enter password";
+"pleaseEnterCorrectPassword" = "Please enter correct password";

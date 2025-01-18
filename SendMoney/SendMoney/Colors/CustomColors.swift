@@ -15,7 +15,8 @@ class CustomColors {
     // Background Colors
     static let backgroundColor = UIColor(hex: "#ECF0F9") ?? UIColor.systemBackground
     static let secondaryBackgroundColor = UIColor(hex: "#E0E0E0") ?? UIColor(white: 0.95, alpha: 1.0)
-
+    static let formFieldBackgroundColor = UIColor(hex: "#FFFFFF") ?? UIColor.white
+    
     // Text Colors
     static let primaryTextColor = UIColor(hex: "#454752") ?? UIColor.label
     static let secondaryTextColor = UIColor(hex: "#B5B5C2") ?? UIColor.secondaryLabel

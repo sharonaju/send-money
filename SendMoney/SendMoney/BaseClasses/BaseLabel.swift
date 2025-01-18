@@ -12,6 +12,7 @@ class BaseLabel: UILabel {
         case primaryMedium16
         case secondaryMedium14
         case secondaryMedium12
+        case errorMedium12
         case custom(font: UIFont, color: UIColor)
     }
     
@@ -37,11 +38,14 @@ class BaseLabel: UILabel {
             self.font = UIFont.systemFont(ofSize: 16, weight: .medium)
             self.textColor = CustomColors.primaryTextColor
         case .secondaryMedium14:
-            self.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            self.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             self.textColor = CustomColors.secondaryTextColor
         case .secondaryMedium12:
-            self.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            self.font = UIFont.systemFont(ofSize: 12, weight: .medium)
             self.textColor = CustomColors.primaryTextColor
+        case .errorMedium12:
+            self.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            self.textColor = CustomColors.errorColor
         case .custom(let font, let color):
             self.font = font
             self.textColor = color

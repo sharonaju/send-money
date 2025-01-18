@@ -14,9 +14,15 @@ enum LocalizedString: String {
     case email = "email"
     case password = "password"
     case byProceedingYouAgreeToTerms = "byProceedingYouAgreeToTerms"
+    case pleaseEnterEmail = "pleaseEnterEmail"
+    case pleaseEnterValidEmail = "pleaseEnterValidEmail"
+    case pleaseEnterCorrectEmail = "pleaseEnterCorrectEmail"
+    case pleaseEnterPassword = "pleaseEnterPassword"
+    case pleaseEnterCorrectPassword = "pleaseEnterCorrectPassword"
+    
     
     var localized: String {
-        return NSLocalizedString(self.rawValue, comment: "")
+        return LocalizationManager.shared.localizedString(forKey: self.rawValue)
     }
 }
 

@@ -17,13 +17,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpF-Wx-CBS" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
-                                <rect key="frame" x="14" y="184" width="365" height="21"/>
+                                <rect key="frame" x="14" y="184" width="365" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciu-OK-pM7" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
-                                <rect key="frame" x="14" y="235" width="365" height="21"/>
+                                <rect key="frame" x="14" y="234.33333333333334" width="365" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="qUL-tI-BMj">
+                                <rect key="frame" x="24" y="324.66666666666669" width="345" height="134"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="314-xi-ssx" customClass="FormTextFieldView" customModule="SendMoney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="flB-FI-rOl"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQT-V7-BYL" customClass="FormTextFieldView" customModule="SendMoney" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="74" width="345" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="UaR-xV-ZzJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8b-wF-Lul" customClass="BaseButton" customModule="SendMoney" customModuleProvider="target">
+                                <rect key="frame" x="14" y="693.66666666666663" width="365" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9Vl-hS-KeK"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="signinButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qgx-6X-PwF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H67-gS-uXD" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                                <rect key="frame" x="14" y="757.66666666666663" width="365" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,16 +69,29 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="r8b-wF-Lul" secondAttribute="trailing" constant="14" id="1AV-KP-BLy"/>
+                            <constraint firstItem="H67-gS-uXD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="44z-Kd-I77"/>
+                            <constraint firstItem="H67-gS-uXD" firstAttribute="top" secondItem="r8b-wF-Lul" secondAttribute="bottom" constant="20" id="70s-Pr-7wZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qpF-Wx-CBS" secondAttribute="trailing" constant="14" id="ERr-HT-GZX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="H67-gS-uXD" secondAttribute="trailing" constant="14" id="F3s-UW-e1E"/>
                             <constraint firstItem="ciu-OK-pM7" firstAttribute="leading" secondItem="qpF-Wx-CBS" secondAttribute="leading" id="W7P-cc-CYk"/>
                             <constraint firstItem="ciu-OK-pM7" firstAttribute="top" secondItem="qpF-Wx-CBS" secondAttribute="bottom" constant="30" id="WUB-sL-71u"/>
                             <constraint firstItem="ciu-OK-pM7" firstAttribute="trailing" secondItem="qpF-Wx-CBS" secondAttribute="trailing" id="XY2-e7-LdF"/>
+                            <constraint firstItem="r8b-wF-Lul" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="hb6-WE-FNW"/>
+                            <constraint firstItem="qUL-tI-BMj" firstAttribute="top" secondItem="ciu-OK-pM7" secondAttribute="bottom" constant="70" id="iV1-jZ-dDH"/>
+                            <constraint firstItem="qUL-tI-BMj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="lOr-ld-aEg"/>
                             <constraint firstItem="qpF-Wx-CBS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="s9B-nz-EmS"/>
                             <constraint firstItem="qpF-Wx-CBS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="81" id="sRz-sE-BNL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H67-gS-uXD" secondAttribute="bottom" constant="40" id="xB6-mQ-Xck"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qUL-tI-BMj" secondAttribute="trailing" constant="24" id="yP7-bP-xCD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3TJ-Sm-frq"/>
                     <connections>
+                        <outlet property="byProceedingLabel" destination="H67-gS-uXD" id="cOt-6f-eNC"/>
+                        <outlet property="emailFieldView" destination="314-xi-ssx" id="b8E-8c-jXt"/>
+                        <outlet property="loginButton" destination="r8b-wF-Lul" id="fcx-GL-PIL"/>
+                        <outlet property="passwordFieldView" destination="vQT-V7-BYL" id="zn0-sE-hhD"/>
                         <outlet property="sendMoneyLabel" destination="qpF-Wx-CBS" id="qnf-Yt-oCx"/>
                         <outlet property="welcomeLabel" destination="ciu-OK-pM7" id="4r0-8Q-dmC"/>
                     </connections>
@@ -49,6 +99,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947.32824427480909" y="3.5211267605633805"/>
+        </scene>
+        <!--Send Money Form View Controller-->
+        <scene sceneID="J18-k3-M9N">
+            <objects>
+                <viewController storyboardIdentifier="SendMoneyFormViewController" id="Xdm-PT-0mf" customClass="SendMoneyFormViewController" customModule="SendMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fSp-aN-dmS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="d8L-kn-oxv"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8em-70-Sjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C2Q-5L-ZWW">

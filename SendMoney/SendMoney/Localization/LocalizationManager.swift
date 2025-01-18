@@ -30,7 +30,8 @@ class LocalizationManager {
     
     // Get localized string
     func localizedString(forKey key: String) -> String {
-        return NSLocalizedString(key, comment: "")
+        let localizedString = NSLocalizedString(key, comment: "")
+        return localizedString
     }
 }
 
