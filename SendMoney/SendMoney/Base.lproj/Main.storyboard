@@ -117,17 +117,32 @@
                                     <outlet property="delegate" destination="Xdm-PT-0mf" id="jIJ-0R-M2o"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fD-6Y-OlF" customClass="BaseButton" customModule="SendMoney" customModuleProvider="target">
+                                <rect key="frame" x="14" y="754" width="365" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4pf-TZ-gI8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="sendAction:" destination="Xdm-PT-0mf" eventType="touchUpInside" id="9tc-Yc-pSw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d8L-kn-oxv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1fD-6Y-OlF" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" constant="14" id="LHz-gE-3YV"/>
+                            <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="1fD-6Y-OlF" secondAttribute="trailing" constant="14" id="N4a-fg-Avj"/>
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="Pow-at-wMz" secondAttribute="trailing" id="OXj-Ek-OTq"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="top" secondItem="d8L-kn-oxv" secondAttribute="top" constant="24" id="OgU-VN-bFA"/>
+                            <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="1fD-6Y-OlF" secondAttribute="bottom" constant="20" id="i1c-Dz-KJR"/>
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="Pow-at-wMz" secondAttribute="bottom" id="p0K-8i-CTh"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" id="xcJ-zf-fch"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="submitButton" destination="1fD-6Y-OlF" id="Hre-xP-cww"/>
                         <outlet property="tableView" destination="Pow-at-wMz" id="1Pf-RB-fTu"/>
                     </connections>
                 </viewController>

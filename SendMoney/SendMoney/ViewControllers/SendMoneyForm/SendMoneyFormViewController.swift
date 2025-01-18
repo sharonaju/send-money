@@ -9,6 +9,7 @@ import UIKit
 
 class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var tableView: UITableView!
     var viewModel = SendMoneyFormViewModel()
     var data: [Any]?
@@ -18,8 +19,26 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         
         // Do any additional setup after loading the view.
         registerTableView()
+        setupUI()
         navBarTitle = LocalizedString.sendMoneyApp.localized
         loadData()
+        NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(keyboardWillShow(_:)),
+                    name: UIResponder.keyboardWillShowNotification,
+                    object: nil
+                )
+                NotificationCenter.default.addObserver(
+                    self,
+                    selector: #selector(keyboardWillHide(_:)),
+                    name: UIResponder.keyboardWillHideNotification,
+                    object: nil
+                )
+    }
+    
+    func setupUI() {
+        submitButton.buttonStyle = .primaryButton
+        submitButton.setTitle(LocalizedString.send.localized, for: .normal)
     }
     
     func loadData() {
@@ -32,6 +51,21 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         tableView.register(UINib(nibName: "FormTextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: FormTextFieldTableViewCell.reuseIdentifier)
     }
     
+    @objc func keyboardWillShow(_ notification: Notification) {
+           guard let userInfo = notification.userInfo,
+                 let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+           
+           let keyboardHeight = keyboardFrame.height
+           let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+           
+           tableView.contentInset = contentInset
+           tableView.scrollIndicatorInsets = contentInset
+       }
+    @objc func keyboardWillHide(_ notification: Notification) {
+            let contentInset = UIEdgeInsets.zero
+            tableView.contentInset = contentInset
+            tableView.scrollIndicatorInsets = contentInset
+        }
     // MARK: - SendMoneyFormViewModelDelegate
     func loadSendMoneyFormData(data: [Any]?) {
         navBarTitle = viewModel.sendMoneyData?.title?.en ?? LocalizedString.sendMoneyApp.localized
@@ -65,6 +99,10 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     // MARK: - FormOptionsViewDelegate
     func didSelectShowOptions() {
         print("show options")
+    }
+    
+    @IBAction func sendAction(_ sender: Any) {
+        print("save action")
     }
     /*
      // MARK: - Navigation

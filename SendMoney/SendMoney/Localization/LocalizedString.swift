@@ -21,6 +21,7 @@ enum LocalizedString: String {
     case pleaseEnterCorrectPassword = "pleaseEnterCorrectPassword"
     case services = "services"
     case providers = "providers"
+    case send = "send"
     var localized: String {
         return LocalizationManager.shared.localizedString(forKey: self.rawValue)
     }
