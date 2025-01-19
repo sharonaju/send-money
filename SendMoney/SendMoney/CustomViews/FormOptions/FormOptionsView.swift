@@ -70,7 +70,7 @@ class FormOptionsView: UIView {
     func loadData() {
         titleLabel.text = data?.title
         selectedTitleLabel.text = data?.selectedTitle
-        if let errorMessage = data?.errorMessage {
+        if (data?.errorMessage) != nil {
             showError()
         } else{
             hideError()
@@ -79,7 +79,7 @@ class FormOptionsView: UIView {
     func showError(){
         formFieldView.layer.borderWidth = 1
         formFieldView.layer.borderColor = CustomColors.errorColor.cgColor
-        errorLabel.text = errorMessage
+        errorLabel.text = errorMessage ?? data?.errorMessage
     }
     func hideError() {
         formFieldView.layer.borderWidth = 0

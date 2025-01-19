@@ -52,6 +52,7 @@
 		80437A0A2D3D348B006A1F7C /* SendMoneyListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437A092D3D348B006A1F7C /* SendMoneyListViewModel.swift */; };
 		80437A0D2D3D41E9006A1F7C /* TransferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437A0C2D3D41E9006A1F7C /* TransferDetailViewController.swift */; };
 		80437A0F2D3D428A006A1F7C /* TransferDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437A0E2D3D428A006A1F7C /* TransferDetailViewModel.swift */; };
+		80437A112D3D5677006A1F7C /* SendMoneyFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437A102D3D5677006A1F7C /* SendMoneyFormModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		80437A092D3D348B006A1F7C /* SendMoneyListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyListViewModel.swift; sourceTree = "<group>"; };
 		80437A0C2D3D41E9006A1F7C /* TransferDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDetailViewController.swift; sourceTree = "<group>"; };
 		80437A0E2D3D428A006A1F7C /* TransferDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDetailViewModel.swift; sourceTree = "<group>"; };
+		80437A102D3D5677006A1F7C /* SendMoneyFormModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyFormModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +294,7 @@
 				804379F12D3C15B5006A1F7C /* TableViewCells */,
 				804379D72D3BD218006A1F7C /* SendMoneyFormViewController.swift */,
 				804379E52D3BF23E006A1F7C /* SendMoneyFormViewModel.swift */,
+				80437A102D3D5677006A1F7C /* SendMoneyFormModel.swift */,
 			);
 			path = SendMoneyForm;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				804379B92D3BA991006A1F7C /* LocalizedString.swift in Sources */,
 				804379F82D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift in Sources */,
 				80437A002D3D2D83006A1F7C /* FormRepository.swift in Sources */,
+				80437A112D3D5677006A1F7C /* SendMoneyFormModel.swift in Sources */,
 				804379D22D3BC98B006A1F7C /* LoginViewModel.swift in Sources */,
 				802536E32D3AAA950063A9CE /* SendMoney.xcdatamodeld in Sources */,
 				804379CA2D3BC16A006A1F7C /* BaseTextField.swift in Sources */,

@@ -10,44 +10,56 @@ import Combine
 
 class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate, CustomPickerDelegate, FormTextFieldViewDelegate {
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var goToListButton: BaseButton!
     @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Properties
     var viewModel = SendMoneyFormViewModel()
     var data: [Any]?
     private var subscriptions = Set<AnyCancellable>()
     
+    // MARK: - UIViewControllerLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         registerTableView()
         setupUI()
-        navBarTitle = LocalizedString.sendMoneyApp.localized
         loadData()
         handleKeyboard()
     }
     
+    // MARK: - Custom Methods
     func handleKeyboard() {
         NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(keyboardWillShow(_:)),
-                    name: UIResponder.keyboardWillShowNotification,
-                    object: nil
-                )
-                NotificationCenter.default.addObserver(
-                    self,
-                    selector: #selector(keyboardWillHide(_:)),
-                    name: UIResponder.keyboardWillHideNotification,
-                    object: nil
-                )
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
-
+    
+    private func addLanguageButton() {
+        let languageButton = UIBarButtonItem(title: viewModel.getCurrentLanguage(), style: .plain, target: self, action: #selector(languageSwitchTapped))
+        languageButton.tintColor = CustomColors.navigationTitleColor
+        navigationItem.rightBarButtonItem = languageButton
+    }
+    
     func setupUI() {
+        navBarTitle = LocalizedString.sendMoneyApp.localized
         submitButton.buttonStyle = .primaryButton
         submitButton.setTitle(LocalizedString.send.localized, for: .normal)
         goToListButton.buttonStyle = .primaryButton
         goToListButton.setTitle(LocalizedString.goToList.localized, for: .normal)
+        addLanguageButton()
     }
     
     func loadData() {
@@ -55,12 +67,6 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         viewModel.fetchFormData()
     }
 
-    override func refreshUI() {
-        super.refreshUI()
-        self.view.layoutSubviews()
-        viewModel.createViewData(shouldValidateForm: false)
-    }
-    
     func registerTableView() {
         tableView.register(UINib(nibName: "FormOptionsTableViewCell", bundle: nil), forCellReuseIdentifier: FormOptionsTableViewCell.reuseIdentifier)
         tableView.register(UINib(nibName: "FormTextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: FormTextFieldTableViewCell.reuseIdentifier)
@@ -79,18 +85,18 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         tableView.contentInset = contentInset
         tableView.scrollIndicatorInsets = contentInset
     }
+    
     // MARK: - SendMoneyFormViewModelDelegate
     func loadSendMoneyFormData(data: [Any]?) {
         navBarTitle = viewModel.sendMoneyData?.title?.en ?? LocalizedString.sendMoneyApp.localized
         self.data = data
         tableView.reloadData()
-        
     }
     func didSaveDataSuccessfully() {
         showSuccessAlert()
     }
-    // MARK: - UITableViewDelegate, UITableViewDataSource
     
+    // MARK: - UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data?.count ?? 0
     }
@@ -133,6 +139,12 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     }
     
     // MARK: - IBActions
+    @objc private func languageSwitchTapped() {
+        let newLanguage = viewModel.currentLanguage == "ar" ? "en" : "ar"
+        viewModel.currentLanguage = newLanguage
+        viewModel.createViewData(shouldValidateForm: viewModel.isValidating)
+        addLanguageButton()
+    }
     @IBAction func sendAction(_ sender: Any) {
         viewModel.createViewData(shouldValidateForm: true)
     }
@@ -185,6 +197,7 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     func formTextFieldDidEndEditing(text: String?, requiredFieldValue: RequiredFieldValue?, type: FormTextFieldView.ViewType?) {
         if let inputValue = requiredFieldValue {
             viewModel.updateRequiredFieldValue(reqFieldValue: inputValue)
+            viewModel.createViewData(shouldValidateForm: false)
         }
     }
     

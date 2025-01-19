@@ -12,7 +12,7 @@ class TransferDetailViewModel: NSObject {
     var formValue = FormValue()
     func convertToJSON() -> String? {
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted // For pretty printed JSON
+        encoder.outputFormatting = .prettyPrinted
         
         do {
             let jsonData = try encoder.encode(formValue)

@@ -31,7 +31,7 @@ func appReducer(state: inout AppState, action: AppAction) {
     }
 }
 
-final class FormRepository {
+class FormRepository {
     static let shared = FormRepository()
     @Published private(set) var savedFormValues: [FormValue] = []
     

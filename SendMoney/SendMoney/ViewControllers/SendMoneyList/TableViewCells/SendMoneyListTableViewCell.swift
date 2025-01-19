@@ -10,9 +10,12 @@ import UIKit
 class SendMoneyListTableViewCell: UITableViewCell {
     static let reuseIdentifier  = "SendMoneyListTableViewCell"
     
+    // MARK: - @IBOutlet
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var serviceNameLabel: BaseLabel!
     @IBOutlet weak var providerNameLabel: BaseLabel!
+    
+    // MARK: - Properties
     var data: FormValue? {
         didSet {
             loadData()

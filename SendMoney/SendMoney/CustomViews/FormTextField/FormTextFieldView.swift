@@ -112,7 +112,7 @@ class FormTextFieldView: UIView, UITextFieldDelegate {
         } else{
             textField.text = nil
         }
-        if let errorMessage = data?.errorMessage {
+        if (data?.errorMessage) != nil {
             showError()
         } else{
             hideError()

@@ -21,7 +21,6 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupNavigationBar()
         setupUI()
-        subscribeToLanguageChange()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -41,27 +40,9 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         addTapGestureToHideKeyboard()
         customizeBackButton()
-        addLanguageButton()
     }
     
-    // MARK: - Language
-    private func addLanguageButton() {
-        let languageButton = UIBarButtonItem(title: getCurrentLanguage(), style: .plain, target: self, action: #selector(languageSwitchTapped))
-        languageButton.tintColor = CustomColors.navigationTitleColor
-        navigationItem.rightBarButtonItem = languageButton
-    }
-    
-    private func getCurrentLanguage() -> String {
-        return Locale.current.language.languageCode?.identifier == "ar" ? "English" : "العربية"
-    }
-    
-    @objc private func languageSwitchTapped() {
-        let newLanguage = Locale.current.language.languageCode?.identifier == "ar" ? "en" : "ar"
-        LocalizationManager.shared.setLanguage(to: newLanguage)
-        
-    }
-    
-    
+   
     // MARK: - Listen to Language Change Notifications
     private func subscribeToLanguageChange() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshUI), name: .languageDidChange, object: nil)
@@ -70,6 +51,13 @@ class BaseViewController: UIViewController {
     
     @objc func refreshUI() {
         self.title = LocalizedString.signin.localized
+        if LocalizationManager.shared.currentLanguage == "ar" {
+            // Set right-to-left (RTL) for Arabic
+            self.view.semanticContentAttribute = .forceRightToLeft
+        } else {
+            // Set left-to-right (LTR) for other languages
+            self.view.semanticContentAttribute = .forceLeftToRight
+        }
         view.setNeedsLayout()
     }
     
@@ -101,14 +89,5 @@ class BaseViewController: UIViewController {
         @objc private func handleTapGesture() {
             view.endEditing(true)  // This will resign the first responder (hide the keyboard)
         }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
 }

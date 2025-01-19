@@ -12,24 +12,14 @@ protocol SendMoneyFormViewModelDelegate {
     func didSaveDataSuccessfully()
 }
 
-struct RequiredFieldValue: Equatable, Codable {
-    var requiredField: RequiredField?
-    var valueString: String?
-    var valueOption: Option?
-}
-
-struct FormValue: Equatable, Codable {
-    var selectedService: Service?
-    var selectedProvider: Provider?
-    var requiredFields: [RequiredFieldValue]?
-}
-
 class SendMoneyFormViewModel {
     
     var delegate: SendMoneyFormViewModelDelegate?
     var sendMoneyData: SendMoney?
     var formInputValue = FormValue()
+    var currentLanguage = "en"
     private let repository = FormRepository.shared
+    var isValidating = false
     
     func fetchFormData() {
        let result = ServiceDataManager.shared.loadJSONFromFile(fileName: "sendMoney", type: SendMoney.self)
@@ -47,12 +37,18 @@ class SendMoneyFormViewModel {
     
     func createViewData(shouldValidateForm: Bool?){
         var data = [Any]()
+        isValidating = shouldValidateForm ?? false
         var isValid = true
         let serviceModel = FormOptionsViewModel(title: LocalizedString.services.localized, selectedTitle: formInputValue.selectedService?.label?.en, type: .service)
         let serviceTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: serviceModel)
         data.append(serviceTableViewCellModel)
         let providerName = formInputValue.selectedProvider?.name ?? LocalizedString.pleaseSelectProvider.localized
-        let providerModel = FormOptionsViewModel(title: LocalizedString.providers.localized, selectedTitle: providerName, type: .provider)
+        var providerErrorMessage: String?
+        if formInputValue.selectedProvider == nil && shouldValidateForm == true{
+            isValid = false
+            providerErrorMessage = LocalizedString.pleaseSelectProvider.localized
+        }
+        let providerModel = FormOptionsViewModel(title: LocalizedString.providers.localized, selectedTitle: providerName, type: .provider, errorMessage: providerErrorMessage)
         let providerTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: providerModel)
         data.append(providerTableViewCellModel)
         if let requiredFields = formInputValue.requiredFields{
@@ -60,9 +56,8 @@ class SendMoneyFormViewModel {
                 if let type = item.requiredField?.type {
                     switch type {
                     case .msisdn, .number, .text:
-                        let currentLangauge = LocalizationManager.shared.currentLanguage
-                        let title = currentLangauge == "en" ? item.requiredField?.label?.en : item.requiredField?.label?.ar
-                        let placeHolder = currentLangauge == "en" ? item.requiredField?.placeholder?.en : item.requiredField?.placeholder?.ar
+                        let title = currentLanguage == "en" ? item.requiredField?.label?.en : item.requiredField?.label?.ar
+                        let placeHolder = currentLanguage == "en" ? item.requiredField?.placeholder?.en : item.requiredField?.placeholder?.ar
                         var validationMessage: String?
                         if shouldValidateForm == true {
                             validationMessage = getValidationMessageForString(formInput: item)
@@ -81,8 +76,7 @@ class SendMoneyFormViewModel {
                             updateRequiredFieldValue(reqFieldValue: requiredFieldValue)
                             currentItem = requiredFieldValue
                         }
-                        let currentLangauge = LocalizationManager.shared.currentLanguage
-                        let title = currentLangauge == "en" ? currentItem.requiredField?.label?.en : currentItem.requiredField?.label?.ar
+                        let title = currentLanguage == "en" ? currentItem.requiredField?.label?.en : currentItem.requiredField?.label?.ar
                         let selectedOption = currentItem.valueOption?.label
                         var validationMessage: String?
                         if shouldValidateForm == true {
@@ -99,13 +93,10 @@ class SendMoneyFormViewModel {
             }
         }
         if shouldValidateForm == true && isValid == true{
-           saveForm()
+            saveForm()
         } else{
             delegate?.loadSendMoneyFormData(data: data)
         }
-           
-        
-       
     }
     
     func serviceOptions() -> [Service]?{
@@ -116,11 +107,6 @@ class SendMoneyFormViewModel {
         let providers = formInputValue.selectedService?.providers
         return providers
     }
-    func requiredOptions(requiredField: RequiredField?) -> [Option]? {
-        let options = requiredField?.options
-        return options
-    }
-
     func updateRequiredFieldValue(reqFieldValue: RequiredFieldValue) {
         if let index = formInputValue.requiredFields?.firstIndex(where: { $0.requiredField == reqFieldValue.requiredField }) {
             // If RequiredFieldValue exists, update the object at that index
@@ -134,24 +120,20 @@ class SendMoneyFormViewModel {
                 if let input = formInput.valueString, input.trimmingCharacters(in: .whitespaces).count > 0 {
                     let isValidInput = input.validateForm(regex: validation)
                     if isValidInput == false {
-                        let currentLangauge = LocalizationManager.shared.currentLanguage
-                        validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
+                        validationMessge = (currentLanguage == "en") ? errorMessage.en : errorMessage.ar
                     }
                     if let maxLength = formInput.requiredField?.maxLength {
                         if formInput.valueString?.count ?? 0 > maxLength {
-                            let currentLangauge = LocalizationManager.shared.currentLanguage
-                            validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
+                            validationMessge = (currentLanguage == "en") ? errorMessage.en : errorMessage.ar
                         }
                     }
                 } else{
-                    let currentLangauge = LocalizationManager.shared.currentLanguage
-                    validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
+                    validationMessge = (currentLanguage == "en") ? errorMessage.en : errorMessage.ar
                 }
                 
             } else{
                 if formInput.valueString == nil {
-                    let currentLangauge = LocalizationManager.shared.currentLanguage
-                    validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
+                    validationMessge = (currentLanguage == "en") ? errorMessage.en : errorMessage.ar
                 }
             }
         }
@@ -162,11 +144,9 @@ class SendMoneyFormViewModel {
         var validationMessge: String?
         if let errorMessage = formInput.requiredField?.validationErrorMessage{
             if formInput.valueOption == nil{
-                let currentLangauge = LocalizationManager.shared.currentLanguage
-                validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
+                validationMessge = (currentLanguage == "en") ? errorMessage.en : errorMessage.ar
             }
         }
-        
         return validationMessge
     }
     func saveForm() {
@@ -176,5 +156,9 @@ class SendMoneyFormViewModel {
         formInputValue = FormValue(selectedService: defaultService, selectedProvider: nil, requiredFields: nil)
         createViewData(shouldValidateForm: false)
         delegate?.didSaveDataSuccessfully()
+    }
+    
+    func getCurrentLanguage() -> String {
+        return currentLanguage == "ar" ? "English" : "العربية"
     }
 }

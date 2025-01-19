@@ -29,7 +29,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -44,7 +44,7 @@
               "max_length": 64,
               "validation_error_message": {
                   "en": "Bank account number is required",
-                  "ar": "Bank account number is required"
+                  "ar": "رقم الحساب البنكي مطلوب"
                 }
             },
             {
@@ -55,14 +55,14 @@
               "name": "firstname",
               "placeholder": {
                   "en": "Please enter first name",
-                  "ar": "Please enter first name"
+                  "ar": "الرجاء إدخال الاسم الأول"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message":  {
                   "en": "First name is required",
-                  "ar": "First name is required"
+                  "ar": "الاسم الأول مطلوب"
                 }
             },
             {
@@ -73,14 +73,14 @@
               "name": "lastname",
               "placeholder": {
                   "en": "Please enter last name",
-                  "ar": "Please enter last name"
+                  "ar": "الرجاء إدخال الاسم الأخير"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message": {
                   "en": "Last name is required",
-                  "ar": "Last name is required"
+                  "ar": "الاسم الأخير مطلوب"
                 }
             }
           ]
@@ -104,7 +104,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -119,7 +119,7 @@
               "max_length": 64,
               "validation_error_message": {
                   "en": "Bank account number is required",
-                  "ar": "Bank account number is required"
+                  "ar": "رقم الحساب البنكي مطلوب"
                 }
             },
             {
@@ -183,7 +183,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -198,7 +198,7 @@
               "max_length": 64,
               "validation_error_message": {
                   "en": "Bank account number is required",
-                  "ar": "Bank account number is required"
+                  "ar": "رقم الحساب البنكي مطلوب"
                 }
             },
             {
@@ -216,7 +216,7 @@
               "max_length": null,
               "validation_error_message": {
                   "en": "Date of birth is required",
-                  "ar": "Date of birth is required"
+                  "ar": "تاريخ الميلاد مطلوب"
                 }
             },
             {
@@ -262,7 +262,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -277,7 +277,7 @@
               "max_length": 64,
               "validation_error_message":  {
                   "en": "Bank account number is required",
-                  "ar": "Bank account number is required"
+                  "ar": "رقم الحساب البنكي مطلوب"
                 }
             },
             {
@@ -288,14 +288,14 @@
               "name": "lastname",
               "placeholder": {
                   "en": "Please enter last name",
-                  "ar": "Please enter last name"
+                  "ar": "الرجاء إدخال الاسم الأخير"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message":{
                   "en": "Last name is required",
-                  "ar": "Last name is required"
+                  "ar": "الاسم الأخير مطلوب"
                 }
             },
             {
@@ -341,7 +341,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -356,7 +356,7 @@
               "max_length": 64,
               "validation_error_message": {
                   "en": "Bank account number is required",
-                  "ar": "Bank account number is required"
+                  "ar": "رقم الحساب البنكي مطلوب"
                 }
             },
             {
@@ -367,14 +367,14 @@
               "name": "lastname",
               "placeholder": {
                   "en": "Please enter last name",
-                  "ar": "Please enter last name"
+                  "ar": "الرجاء إدخال الاسم الأخير"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message": {
                   "en": "Last name is required",
-                  "ar": "Last name is required"
+                  "ar": "الاسم الأخير مطلوب"
                 }
             }
           ]
@@ -406,7 +406,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -421,7 +421,7 @@
               "max_length": 14,
               "validation_error_message": {
                   "en": "Mobile number is required",
-                  "ar": "Mobile number is required"
+                  "ar": "رقم الجوال مطلوب"
                 }
             },
             {
@@ -432,14 +432,14 @@
               "name": "firstname",
               "placeholder": {
                   "en": "Please enter first name",
-                  "ar": "Please enter first name"
+                  "ar": "الرجاء إدخال الاسم الأول"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message": {
                   "en": "First name is required",
-                  "ar": "First name is required"
+                  "ar": "الاسم الأول مطلوب"
                 }
             },
             {
@@ -450,14 +450,14 @@
               "name": "lastname",
               "placeholder": {
                   "en": "Please enter last name",
-                  "ar": "Please enter last name"
+                  "ar": "الرجاء إدخال الاسم الأخير"
                 },
               "type": "text",
               "validation": "^[\\s\\S]*",
               "max_length": 250,
               "validation_error_message": {
                   "en": "Last name is required",
-                  "ar": "Last name is required"
+                  "ar": "الاسم الأخير مطلوب"
                 }
             }
           ]
@@ -481,7 +481,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -496,7 +496,7 @@
               "max_length": 14,
               "validation_error_message": {
                   "en": "Mobile number is required",
-                  "ar": "Mobile number is required"
+                  "ar": "رقم الجوال مطلوب"
                 }
             },
             {
@@ -561,7 +561,7 @@
               "validation_error_message":
               {
                 "en": "Amount is required",
-                "ar": "Amount is required"
+                "ar": "المبلغ مطلوب"
               }
             },
             {
@@ -576,7 +576,7 @@
               "max_length": 14,
               "validation_error_message":{
                   "en": "Mobile number is required",
-                  "ar": "Mobile number is required"
+                  "ar": "رقم الجوال مطلوب"
                 }
             },
             {
@@ -644,7 +644,7 @@
               "max_length": 0,
               "validation_error_message": {
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -659,7 +659,7 @@
               "max_length": 14,
               "validation_error_message": {
                   "en": "Mobile number is required",
-                  "ar": "Mobile number is required"
+                  "ar": "رقم الجوال مطلوب"
                 }
             },
             {
@@ -701,7 +701,7 @@
               "max_length": 0,
               "validation_error_message":{
                   "en": "Amount is required",
-                  "ar": "Amount is required"
+                  "ar": "المبلغ مطلوب"
                 }
             },
             {
@@ -716,7 +716,7 @@
               "max_length": 14,
               "validation_error_message": {
                   "en": "Mobile number is required",
-                  "ar": "Mobile number is required"
+                  "ar": "رقم الجوال مطلوب"
                 }
             },
             {

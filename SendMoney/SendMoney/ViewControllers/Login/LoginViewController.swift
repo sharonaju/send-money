@@ -24,17 +24,16 @@ class LoginViewController: BaseViewController, FormTextFieldViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navBarTitle = LocalizedString.signin.localized
-        
+        setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUI()
+        
         connectDelegates()
     }
     override func refreshUI() {
         super.refreshUI()
-        setupUI()
+        self.setupUI()
     }
     // MARK: - CustomMethods
     func setupUI(){
@@ -42,6 +41,7 @@ class LoginViewController: BaseViewController, FormTextFieldViewDelegate {
         welcomeLabel.style = .secondaryMedium14
         byProceedingLabel.style = .secondaryMedium12
         loginButton.buttonStyle = .primaryButton
+        navBarTitle = LocalizedString.signin.localized
         sendMoneyLabel.text = LocalizedString.sendMoneyApp.localized
         welcomeLabel.text = LocalizedString.welcomeToSendMoneyApp.localized
         byProceedingLabel.text = LocalizedString.byProceedingYouAgreeToTerms.localized
@@ -50,8 +50,6 @@ class LoginViewController: BaseViewController, FormTextFieldViewDelegate {
         let passwordFormMode = FormTextFieldViewModel(title: nil, textfieldPlaceHolder: LocalizedString.password.localized, textFieldKeybordType: .default)
         passwordFieldView.data = passwordFormMode
         loginButton.setTitle(LocalizedString.signin.localized, for: .normal)
-        emailFieldView.textField.text = Constants.validEmail
-        passwordFieldView.textField.text = Constants.validPassword
     }
     func connectDelegates(){
         emailFieldView.delegate = self
