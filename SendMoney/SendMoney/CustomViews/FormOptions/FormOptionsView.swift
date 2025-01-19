@@ -8,12 +8,13 @@
 import UIKit
 
 protocol FormOptionsViewDelegate {
-    func didSelectShowOptions(type: FormOptionsType?)
+    func didSelectShowOptions(type: FormOptionsType?, requiredField: RequiredField?)
 }
 struct FormOptionsViewModel {
     var title: String?
     var selectedTitle: String?
     var type: FormOptionsType?
+    var requiredField: RequiredField?
 }
 enum FormOptionsType {
     case service
@@ -63,6 +64,6 @@ class FormOptionsView: UIView {
     }
     
     @IBAction func optionsButtonAction(_ sender: Any) {
-        delegate?.didSelectShowOptions(type: data?.type)
+        delegate?.didSelectShowOptions(type: data?.type, requiredField: data?.requiredField)
     }
 }

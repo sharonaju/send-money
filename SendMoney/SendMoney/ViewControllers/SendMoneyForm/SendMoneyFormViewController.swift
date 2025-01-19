@@ -97,7 +97,7 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     }
     
     // MARK: - FormOptionsViewDelegate
-    func didSelectShowOptions(type: FormOptionsType?) {
+    func didSelectShowOptions(type: FormOptionsType?, requiredField: RequiredField?) {
         if let selectedType = type {
             switch selectedType {
             case .service:
@@ -109,10 +109,11 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
                     showPicker(data: providers, type: .providers)
                 }
             case .requiredField:
-                print("requiredField")
+                if let requiredField = requiredField {
+                    showPicker(data: [requiredField], type: .options)
+                }
             }
         }
-        print("show options")
     }
     
     // MARK: - IBActions
@@ -133,7 +134,6 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     }
     // MARK: - CustomPickerDelegate
         func didSelectItem(_ selectedItem: Any) {
-            print(selectedItem)
             switch selectedItem {
             case let service as Service:
                 viewModel.formInputValue.selectedService = service
@@ -143,9 +143,9 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
                 viewModel.formInputValue.selectedProvider = provider
                 viewModel.formInputValue.requiredFields = nil
                 viewModel.createViewData()
-//            case let option as String:
-//                selectedOption = option
-//                optionButton.setTitle(option, for: .normal)
+            case let inputValue as RequiredFieldValue:
+                viewModel.formInputValue.requiredFields?.append(inputValue)
+                viewModel.createViewData()
             default:
                 break
             }

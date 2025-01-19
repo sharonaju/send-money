@@ -36,7 +36,6 @@ class SendMoneyFormViewModel {
             sendMoneyData = successData
             let defaultService = successData.services?.first
             formInputValue.selectedService = defaultService
-//            let defaultProvider = defaultService?.providers?.first
             formInputValue.selectedProvider = nil
             createViewData()
         case .failure(let error):
@@ -49,7 +48,7 @@ class SendMoneyFormViewModel {
         let serviceModel = FormOptionsViewModel(title: LocalizedString.services.localized, selectedTitle: formInputValue.selectedService?.label?.en, type: .service)
         let serviceTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: serviceModel)
         data.append(serviceTableViewCellModel)
-        let providerName = formInputValue.selectedProvider?.name ?? "Please select a provider"
+        let providerName = formInputValue.selectedProvider?.name ?? LocalizedString.pleaseSelectProvider.localized
         let providerModel = FormOptionsViewModel(title: LocalizedString.providers.localized, selectedTitle: providerName, type: .provider)
         let providerTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: providerModel)
         data.append(providerTableViewCellModel)
@@ -72,7 +71,7 @@ class SendMoneyFormViewModel {
                     case .option:
                         let title = item.label?.en
                         let defaultOption = item.options?.first?.label
-                        let optionModel = FormOptionsViewModel(title: title, selectedTitle: defaultOption, type: .requiredField)
+                        let optionModel = FormOptionsViewModel(title: title, selectedTitle: defaultOption, type: .requiredField, requiredField: item)
                         let cellModel = FormOptionsTableViewCellModel(formOptionModel: optionModel)
                         data.append(cellModel)
                     case .text:
@@ -95,6 +94,10 @@ class SendMoneyFormViewModel {
     func providerOptions() -> [Provider]? {
         let providers = formInputValue.selectedService?.providers
         return providers
+    }
+    func requiredOptions(requiredField: RequiredField?) -> [Option]? {
+        let options = requiredField?.options
+        return options
     }
     
 }

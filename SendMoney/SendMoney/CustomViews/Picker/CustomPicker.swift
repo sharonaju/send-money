@@ -41,13 +41,13 @@ class CustomPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
         addSubview(contentView)
         
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         Bundle.main.loadNibNamed("CustomPickerView", owner: self, options: nil)
         addSubview(contentView)
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.frame = bounds
@@ -56,7 +56,7 @@ class CustomPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     private func setupUI() {
-
+        
     }
     
     // MARK: - Public Methods
@@ -86,7 +86,7 @@ class CustomPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
             self.alpha = 1
         }
     }
-
+    
     func hide() {
         UIView.animate(withDuration: 0.3, animations: {
             self.alpha = 0
@@ -100,17 +100,34 @@ class CustomPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return data.count
+        if let item = data as? [Service] {
+            return item.count
+        }
+        if let item = data as? [Provider] {
+            return item.count
+        }
+        if let item = data as? [RequiredField] {
+            let reqField = item.first
+            return reqField?.options?.count ?? 0
+        }
+        return 0
     }
     
     // MARK: - UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let item = data[row]
-        if let data = item as? Service {
-            return data.label?.en
+        if let services = data as? [Service] {
+            let service = services[row]
+            return service.label?.en
         }
-        if let data = item as? Provider {
-            return data.name
+        if let providers = data as? [Provider] {
+            let provider = providers[row]
+            return provider.name
+        }
+        if let reqFields = data as? [RequiredField] {
+            let reqField = reqFields.first
+            let options = reqField?.options
+            let option = options?[row]
+            return option?.label
         }
         return nil
     }
@@ -122,8 +139,21 @@ class CustomPickerView: UIView, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBAction func doneButtonAction(_ sender: Any) {
         let selectedRow = pickerView.selectedRow(inComponent: 0)
-        let selectedItem = data[selectedRow]
-        delegate?.didSelectItem(selectedItem)
+        if let services = data as? [Service] {
+            let service = services[selectedRow]
+            delegate?.didSelectItem(service)
+        }
+        if let providers = data as? [Provider] {
+            let provider = providers[selectedRow]
+            delegate?.didSelectItem(provider)
+        }
+        if let reqFields = data as? [RequiredField] {
+            let reqField = reqFields.first
+            let options = reqField?.options
+            let option = options?[selectedRow]
+            let reqFieldValue = RequiredFieldValue(requiredField: reqField, valueOption: option)
+            delegate?.didSelectItem(reqFieldValue)
+        }
         removeFromSuperview()
     }
     
