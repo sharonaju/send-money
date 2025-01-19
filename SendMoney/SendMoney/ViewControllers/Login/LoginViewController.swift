@@ -32,6 +32,10 @@ class LoginViewController: BaseViewController, FormTextFieldViewDelegate {
         setupUI()
         connectDelegates()
     }
+    override func refreshUI() {
+        super.refreshUI()
+        setupUI()
+    }
     // MARK: - CustomMethods
     func setupUI(){
         sendMoneyLabel.style = .primaryMedium16

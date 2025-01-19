@@ -58,8 +58,9 @@ class SendMoneyFormViewModel {
                 if let type = item.requiredField?.type {
                     switch type {
                     case .msisdn, .number, .text:
-                        let title = item.requiredField?.label?.en
-                        let placeHolder = item.requiredField?.placeholder?.en
+                        let currentLangauge = LocalizationManager.shared.currentLanguage
+                        let title = currentLangauge == "en" ? item.requiredField?.label?.en : item.requiredField?.label?.ar
+                        let placeHolder = currentLangauge == "en" ? item.requiredField?.placeholder?.en : item.requiredField?.placeholder?.ar
                         var validationMessage: String?
                         if shouldValidateForm == true {
                             validationMessage = getValidationMessageForString(formInput: item)
@@ -78,7 +79,8 @@ class SendMoneyFormViewModel {
                             updateRequiredFieldValue(reqFieldValue: requiredFieldValue)
                             currentItem = requiredFieldValue
                         }
-                        let title = currentItem.requiredField?.label?.en
+                        let currentLangauge = LocalizationManager.shared.currentLanguage
+                        let title = currentLangauge == "en" ? currentItem.requiredField?.label?.en : currentItem.requiredField?.label?.ar
                         let selectedOption = currentItem.valueOption?.label
                         var validationMessage: String?
                         if shouldValidateForm == true {
@@ -123,20 +125,24 @@ class SendMoneyFormViewModel {
                 if let input = formInput.valueString, input.trimmingCharacters(in: .whitespaces).count > 0 {
                     let isValidInput = input.validateForm(regex: validation)
                     if isValidInput == false {
-                        validationMessge = errorMessage.en
+                        let currentLangauge = LocalizationManager.shared.currentLanguage
+                        validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
                     }
                     if let maxLength = formInput.requiredField?.maxLength {
                         if formInput.valueString?.count ?? 0 > maxLength {
-                            validationMessge = errorMessage.en
+                            let currentLangauge = LocalizationManager.shared.currentLanguage
+                            validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
                         }
                     }
                 } else{
-                    validationMessge = errorMessage.en
+                    let currentLangauge = LocalizationManager.shared.currentLanguage
+                    validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
                 }
                 
             } else{
                 if formInput.valueString == nil {
-                    validationMessge = errorMessage.en
+                    let currentLangauge = LocalizationManager.shared.currentLanguage
+                    validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
                 }
             }
         }
@@ -147,7 +153,8 @@ class SendMoneyFormViewModel {
         var validationMessge: String?
         if let errorMessage = formInput.requiredField?.validationErrorMessage{
             if formInput.valueOption == nil{
-                validationMessge = errorMessage.en
+                let currentLangauge = LocalizationManager.shared.currentLanguage
+                validationMessge = (currentLangauge == "en") ? errorMessage.en : errorMessage.ar
             }
         }
         

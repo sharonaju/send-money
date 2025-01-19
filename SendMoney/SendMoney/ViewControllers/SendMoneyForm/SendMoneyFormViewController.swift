@@ -48,6 +48,7 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
 
     override func refreshUI() {
         super.refreshUI()
+        self.view.layoutSubviews()
         viewModel.createViewData(shouldValidateForm: false)
     }
     

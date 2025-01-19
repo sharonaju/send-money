@@ -21,7 +21,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupNavigationBar()
         setupUI()
-//        subscribeToLanguageChange()
+        subscribeToLanguageChange()
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -41,7 +41,7 @@ class BaseViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         addTapGestureToHideKeyboard()
         customizeBackButton()
-//        addLanguageButton()
+        addLanguageButton()
     }
     
     // MARK: - Language
