@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate {
+class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate, CustomPickerDelegate {
     
     @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var tableView: UITableView!
@@ -97,13 +97,60 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     }
     
     // MARK: - FormOptionsViewDelegate
-    func didSelectShowOptions() {
+    func didSelectShowOptions(type: FormOptionsType?) {
+        if let selectedType = type {
+            switch selectedType {
+            case .service:
+                if let serviceOptions = viewModel.serviceOptions() {
+                    showPicker(data: serviceOptions, type: .services)
+                }
+            case .provider:
+                if let providers = viewModel.providerOptions(){
+                    showPicker(data: providers, type: .providers)
+                }
+            case .requiredField:
+                print("requiredField")
+            }
+        }
         print("show options")
     }
     
+    // MARK: - IBActions
     @IBAction func sendAction(_ sender: Any) {
         print("save action")
     }
+    
+    // MARK: - Picker Display
+    private func showPicker(data: [Any], type: PickerCategory) {
+        let picker = CustomPickerView(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height-200, width: view.frame.size.width, height: 400))
+        view.addSubview(picker)
+
+        picker.configure(with: data, type: type, delegate: self)
+        picker.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            picker.alpha = 1
+        }
+    }
+    // MARK: - CustomPickerDelegate
+        func didSelectItem(_ selectedItem: Any) {
+            print(selectedItem)
+            switch selectedItem {
+            case let service as Service:
+                viewModel.formInputValue.selectedService = service
+                viewModel.formInputValue.selectedProvider = nil
+                viewModel.createViewData()
+            case let provider as Provider:
+                viewModel.formInputValue.selectedProvider = provider
+                viewModel.formInputValue.requiredFields = nil
+                viewModel.createViewData()
+//            case let option as String:
+//                selectedOption = option
+//                optionButton.setTitle(option, for: .normal)
+            default:
+                break
+            }
+            
+        }
     /*
      // MARK: - Navigation
      

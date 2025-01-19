@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPickerView" customModule="SendMoney" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="kcO-q7-yNv" id="HEf-zA-QsE"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="s9X-aV-oZ1"/>
+                <outlet property="doneButton" destination="QHN-Fu-qQT" id="frk-za-lv6"/>
+                <outlet property="pickerView" destination="NCn-N3-65A" id="lbo-o6-XfC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fgd-dX-zoS">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                    <subviews>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a72-VB-UE6">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="8lv-bl-cVi"/>
+                            </constraints>
+                            <items>
+                                <barButtonItem title="Cancel" id="kcO-q7-yNv">
+                                    <color key="tintColor" red="0.40000000000000002" green="0.43137252329999998" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <connections>
+                                        <action selector="cancelButtonAction:" destination="-1" id="ItH-GA-28i"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="EVS-Fg-Cnq"/>
+                                <barButtonItem title="Done" id="QHN-Fu-qQT">
+                                    <color key="tintColor" red="0.40000000000000002" green="0.43137252329999998" blue="0.52156865600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <connections>
+                                        <action selector="doneButtonAction:" destination="-1" id="jlP-tl-M8a"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-N3-65A">
+                            <rect key="frame" x="0.0" y="44" width="393" height="156"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="yXg-Ec-4Q1"/>
+                                <outlet property="delegate" destination="-1" id="nHu-dh-nPe"/>
+                            </connections>
+                        </pickerView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="top" secondItem="fgd-dX-zoS" secondAttribute="top" id="2GF-Bb-flM"/>
+                <constraint firstItem="fgd-dX-zoS" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="Ga8-FK-rR5"/>
+                <constraint firstItem="fgd-dX-zoS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="b0A-RW-zAp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fgd-dX-zoS" secondAttribute="trailing" id="iF4-se-ikJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="69" y="20"/>
+        </view>
+    </objects>
+</document>

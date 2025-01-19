@@ -22,6 +22,8 @@ enum LocalizedString: String {
     case services = "services"
     case providers = "providers"
     case send = "send"
+    case cancel = "cancel"
+    case done = "done"
     var localized: String {
         return LocalizationManager.shared.localizedString(forKey: self.rawValue)
     }

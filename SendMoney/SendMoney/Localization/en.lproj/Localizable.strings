@@ -12,3 +12,5 @@
 "services" = "Services";
 "providers" = "Providers";
 "send" = "Send";
+"cancel" = "Cancel";
+"done" = "Done";

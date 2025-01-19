@@ -8,7 +8,7 @@
 import UIKit
 
 protocol FormOptionsViewDelegate {
-    func didSelectShowOptions()
+    func didSelectShowOptions(type: FormOptionsType?)
 }
 struct FormOptionsViewModel {
     var title: String?
@@ -63,6 +63,6 @@ class FormOptionsView: UIView {
     }
     
     @IBAction func optionsButtonAction(_ sender: Any) {
-        print("open picker")
+        delegate?.didSelectShowOptions(type: data?.type)
     }
 }

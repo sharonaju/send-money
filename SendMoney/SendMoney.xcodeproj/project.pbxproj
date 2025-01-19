@@ -43,6 +43,8 @@
 		804379F52D3C15C8006A1F7C /* FormOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379F32D3C15C8006A1F7C /* FormOptionsTableViewCell.xib */; };
 		804379F82D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379F62D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift */; };
 		804379F92D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */; };
+		804379FC2D3CDE9F006A1F7C /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804379FB2D3CDE9F006A1F7C /* CustomPicker.swift */; };
+		804379FE2D3CE0C6006A1F7C /* CustomPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 804379FD2D3CE0C6006A1F7C /* CustomPickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		804379F32D3C15C8006A1F7C /* FormOptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormOptionsTableViewCell.xib; sourceTree = "<group>"; };
 		804379F62D3C17DA006A1F7C /* FormTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormTextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		804379FB2D3CDE9F006A1F7C /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		804379FD2D3CE0C6006A1F7C /* CustomPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPickerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +237,7 @@
 		804379C42D3BB5C5006A1F7C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				804379FA2D3CDE88006A1F7C /* Picker */,
 				804379E82D3BF73F006A1F7C /* FormOptions */,
 				804379E72D3BF721006A1F7C /* FormTextField */,
 			);
@@ -319,6 +324,15 @@
 				804379F72D3C17DA006A1F7C /* FormTextFieldTableViewCell.xib */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		804379FA2D3CDE88006A1F7C /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				804379FB2D3CDE9F006A1F7C /* CustomPicker.swift */,
+				804379FD2D3CE0C6006A1F7C /* CustomPickerView.xib */,
+			);
+			path = Picker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				804379F52D3C15C8006A1F7C /* FormOptionsTableViewCell.xib in Resources */,
+				804379FE2D3CE0C6006A1F7C /* CustomPickerView.xib in Resources */,
 				804379EC2D3BF777006A1F7C /* FormOptionsView.xib in Resources */,
 				804379C82D3BB605006A1F7C /* FormTextFieldView.xib in Resources */,
 				804379C02D3BB2B9006A1F7C /* Localizable.strings in Resources */,
@@ -479,6 +494,7 @@
 				804379F42D3C15C8006A1F7C /* FormOptionsTableViewCell.swift in Sources */,
 				804379A82D3BA07E006A1F7C /* UIColor+Extension.swift in Sources */,
 				804379AE2D3BA3E2006A1F7C /* BaseLabel.swift in Sources */,
+				804379FC2D3CDE9F006A1F7C /* CustomPicker.swift in Sources */,
 				802536D92D3AAA950063A9CE /* AppDelegate.swift in Sources */,
 				804379C62D3BB5F3006A1F7C /* FormTextFieldView.swift in Sources */,
 				804379E42D3BD77E006A1F7C /* SendMoneyData.swift in Sources */,

@@ -36,8 +36,8 @@ class SendMoneyFormViewModel {
             sendMoneyData = successData
             let defaultService = successData.services?.first
             formInputValue.selectedService = defaultService
-            let defaultProvider = defaultService?.providers?.first
-            formInputValue.selectedProvider = defaultProvider
+//            let defaultProvider = defaultService?.providers?.first
+            formInputValue.selectedProvider = nil
             createViewData()
         case .failure(let error):
             print("Error loading data: \(error.localizedDescription)")
@@ -49,7 +49,8 @@ class SendMoneyFormViewModel {
         let serviceModel = FormOptionsViewModel(title: LocalizedString.services.localized, selectedTitle: formInputValue.selectedService?.label?.en, type: .service)
         let serviceTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: serviceModel)
         data.append(serviceTableViewCellModel)
-        let providerModel = FormOptionsViewModel(title: LocalizedString.providers.localized, selectedTitle: formInputValue.selectedProvider?.name, type: .provider)
+        let providerName = formInputValue.selectedProvider?.name ?? "Please select a provider"
+        let providerModel = FormOptionsViewModel(title: LocalizedString.providers.localized, selectedTitle: providerName, type: .provider)
         let providerTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: providerModel)
         data.append(providerTableViewCellModel)
         if let requiredFields = formInputValue.selectedProvider?.requiredFields{
@@ -85,6 +86,15 @@ class SendMoneyFormViewModel {
             }
         }
         delegate?.loadSendMoneyFormData(data: data)
+    }
+    
+    func serviceOptions() -> [Service]?{
+        let services = sendMoneyData?.services
+        return services
+    }
+    func providerOptions() -> [Provider]? {
+        let providers = formInputValue.selectedService?.providers
+        return providers
     }
     
 }
