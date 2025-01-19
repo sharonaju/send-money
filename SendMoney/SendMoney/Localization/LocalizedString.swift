@@ -25,6 +25,8 @@ enum LocalizedString: String {
     case cancel = "cancel"
     case done = "done" 
     case pleaseSelectProvider = "pleaseSelectProvider"
+    case goToList = "goToList"
+    case transferList = "transferList"
     var localized: String {
         return LocalizationManager.shared.localizedString(forKey: self.rawValue)
     }

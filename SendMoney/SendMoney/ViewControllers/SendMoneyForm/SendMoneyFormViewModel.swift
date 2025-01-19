@@ -8,16 +8,17 @@
 import UIKit
 
 protocol SendMoneyFormViewModelDelegate {
-    func loadSendMoneyFormData(data: [Any]?, isValidData: Bool?)
+    func loadSendMoneyFormData(data: [Any]?)
+    func didSaveDataSuccessfully()
 }
 
-struct RequiredFieldValue: Equatable {
+struct RequiredFieldValue: Equatable, Codable {
     var requiredField: RequiredField?
     var valueString: String?
     var valueOption: Option?
 }
 
-struct FormValue {
+struct FormValue: Equatable, Codable {
     var selectedService: Service?
     var selectedProvider: Provider?
     var requiredFields: [RequiredFieldValue]?
@@ -28,6 +29,7 @@ class SendMoneyFormViewModel {
     var delegate: SendMoneyFormViewModelDelegate?
     var sendMoneyData: SendMoney?
     var formInputValue = FormValue()
+    private let repository = FormRepository.shared
     
     func fetchFormData() {
        let result = ServiceDataManager.shared.loadJSONFromFile(fileName: "sendMoney", type: SendMoney.self)
@@ -45,7 +47,7 @@ class SendMoneyFormViewModel {
     
     func createViewData(shouldValidateForm: Bool?){
         var data = [Any]()
-        var isValid: Bool?
+        var isValid = true
         let serviceModel = FormOptionsViewModel(title: LocalizedString.services.localized, selectedTitle: formInputValue.selectedService?.label?.en, type: .service)
         let serviceTableViewCellModel = FormOptionsTableViewCellModel(formOptionModel: serviceModel)
         data.append(serviceTableViewCellModel)
@@ -96,7 +98,14 @@ class SendMoneyFormViewModel {
                 }
             }
         }
-        delegate?.loadSendMoneyFormData(data: data, isValidData: isValid)
+        if shouldValidateForm == true && isValid == true{
+           saveForm()
+        } else{
+            delegate?.loadSendMoneyFormData(data: data)
+        }
+           
+        
+       
     }
     
     func serviceOptions() -> [Service]?{
@@ -160,5 +169,12 @@ class SendMoneyFormViewModel {
         
         return validationMessge
     }
-    
+    func saveForm() {
+        repository.saveFormValue(formInputValue)
+        let defaultService = sendMoneyData?.services?.first
+        formInputValue.selectedService = defaultService
+        formInputValue = FormValue(selectedService: defaultService, selectedProvider: nil, requiredFields: nil)
+        createViewData(shouldValidateForm: false)
+        delegate?.didSaveDataSuccessfully()
+    }
 }

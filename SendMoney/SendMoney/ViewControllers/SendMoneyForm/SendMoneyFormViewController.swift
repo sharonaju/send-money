@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import Combine
 
 class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate, CustomPickerDelegate, FormTextFieldViewDelegate {
     
+    @IBOutlet weak var goToListButton: BaseButton!
     @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var tableView: UITableView!
     var viewModel = SendMoneyFormViewModel()
     var data: [Any]?
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +25,10 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         setupUI()
         navBarTitle = LocalizedString.sendMoneyApp.localized
         loadData()
+        handleKeyboard()
+    }
+    
+    func handleKeyboard() {
         NotificationCenter.default.addObserver(
                     self,
                     selector: #selector(keyboardWillShow(_:)),
@@ -35,10 +42,12 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
                     object: nil
                 )
     }
-    
+
     func setupUI() {
         submitButton.buttonStyle = .primaryButton
         submitButton.setTitle(LocalizedString.send.localized, for: .normal)
+        goToListButton.buttonStyle = .primaryButton
+        goToListButton.setTitle(LocalizedString.goToList.localized, for: .normal)
     }
     
     func loadData() {
@@ -71,16 +80,15 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         tableView.scrollIndicatorInsets = contentInset
     }
     // MARK: - SendMoneyFormViewModelDelegate
-    func loadSendMoneyFormData(data: [Any]?, isValidData: Bool?) {
+    func loadSendMoneyFormData(data: [Any]?) {
         navBarTitle = viewModel.sendMoneyData?.title?.en ?? LocalizedString.sendMoneyApp.localized
         self.data = data
         tableView.reloadData()
-        if isValidData == true {
-            
-        }
+        
     }
-    
-    
+    func didSaveDataSuccessfully() {
+        showSuccessAlert()
+    }
     // MARK: - UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -129,6 +137,11 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         viewModel.createViewData(shouldValidateForm: true)
     }
     
+    @IBAction func goToListAction(_ sender: Any) {
+        if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SendMoneyListViewController") as? SendMoneyListViewController {
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
     // MARK: - Picker Display
     private func showPicker(data: [Any], type: PickerCategory) {
         let picker = CustomPickerView(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height-200, width: view.frame.size.width, height: 400))
@@ -175,15 +188,18 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         }
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func showSuccessAlert() {
+        let alertController = UIAlertController(title: "Success",
+                                                message: "Data saved successfully!",
+                                                preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }),
+           let windowScene = scene as? UIWindowScene,
+           let topController = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController {
+            topController.present(alertController, animated: true, completion: nil)
+        }
+    }
     
 }

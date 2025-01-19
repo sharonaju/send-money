@@ -15,3 +15,7 @@
 "cancel" = "Cancel";
 "done" = "Done";
 "pleaseSelectProvider" = "Please select a provider";
+"goToList" = "Go To List";
+"transferList" = "Transfer List";
+
+

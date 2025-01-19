@@ -13,18 +13,18 @@ struct SendMoney: Codable {
     let services: [Service]?
 }
 // MARK: - Service
-struct Service: Codable {
+struct Service: Codable, Equatable {
     let label: Label?
     let name: String?
     let providers: [Provider]?
 }
 // MARK: - Label
-struct Label: Codable {
+struct Label: Codable, Equatable {
     let en: String?
 }
 
 // MARK: - Provider
-struct Provider: Codable {
+struct Provider: Codable, Equatable {
     let name, id: String?
     let requiredFields: [RequiredField]?
 

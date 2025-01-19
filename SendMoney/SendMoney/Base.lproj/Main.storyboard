@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pow-at-wMz">
-                                <rect key="frame" x="0.0" y="83" width="393" height="657"/>
+                                <rect key="frame" x="0.0" y="83" width="393" height="599"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -118,7 +118,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fD-6Y-OlF" customClass="BaseButton" customModule="SendMoney" customModuleProvider="target">
-                                <rect key="frame" x="14" y="754" width="365" height="44"/>
+                                <rect key="frame" x="14" y="696" width="365" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4pf-TZ-gI8"/>
                                 </constraints>
@@ -128,20 +128,35 @@
                                     <action selector="sendAction:" destination="Xdm-PT-0mf" eventType="touchUpInside" id="9tc-Yc-pSw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cm-Pu-093" customClass="BaseButton" customModule="SendMoney" customModuleProvider="target">
+                                <rect key="frame" x="14" y="754" width="365" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kIZ-QG-myk"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="goToListAction:" destination="Xdm-PT-0mf" eventType="touchUpInside" id="ks9-3t-uii"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="d8L-kn-oxv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="7cm-Pu-093" secondAttribute="trailing" constant="14" id="1Uo-FT-V5D"/>
+                            <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="7cm-Pu-093" secondAttribute="bottom" constant="20" id="L3m-KY-kA4"/>
                             <constraint firstItem="1fD-6Y-OlF" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" constant="14" id="LHz-gE-3YV"/>
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="1fD-6Y-OlF" secondAttribute="trailing" constant="14" id="N4a-fg-Avj"/>
+                            <constraint firstItem="7cm-Pu-093" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" constant="14" id="NfN-dh-uNf"/>
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="Pow-at-wMz" secondAttribute="trailing" id="OXj-Ek-OTq"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="top" secondItem="d8L-kn-oxv" secondAttribute="top" constant="24" id="OgU-VN-bFA"/>
-                            <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="1fD-6Y-OlF" secondAttribute="bottom" constant="20" id="i1c-Dz-KJR"/>
+                            <constraint firstItem="7cm-Pu-093" firstAttribute="top" secondItem="1fD-6Y-OlF" secondAttribute="bottom" constant="14" id="fhb-en-OEG"/>
                             <constraint firstItem="1fD-6Y-OlF" firstAttribute="top" secondItem="Pow-at-wMz" secondAttribute="bottom" constant="14" id="rto-RU-C42"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" id="xcJ-zf-fch"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="goToListButton" destination="7cm-Pu-093" id="6mY-7g-K7j"/>
                         <outlet property="submitButton" destination="1fD-6Y-OlF" id="Hre-xP-cww"/>
                         <outlet property="tableView" destination="Pow-at-wMz" id="1Pf-RB-fTu"/>
                     </connections>
@@ -149,6 +164,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8em-70-Sjg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1853" y="4"/>
+        </scene>
+        <!--Send Money List View Controller-->
+        <scene sceneID="YVF-hU-dIr">
+            <objects>
+                <viewController storyboardIdentifier="SendMoneyListViewController" id="uo6-Ck-YaJ" customClass="SendMoneyListViewController" customModule="SendMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qPL-Ka-BJ0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HoK-xc-3Qi">
+                                <rect key="frame" x="0.0" y="73" width="393" height="745"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uo6-Ck-YaJ" id="uY7-aL-NJo"/>
+                                    <outlet property="delegate" destination="uo6-Ck-YaJ" id="PfX-xo-ZWf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Izg-bU-daY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HoK-xc-3Qi" firstAttribute="top" secondItem="Izg-bU-daY" secondAttribute="top" constant="14" id="RDA-VL-MUs"/>
+                            <constraint firstItem="HoK-xc-3Qi" firstAttribute="leading" secondItem="Izg-bU-daY" secondAttribute="leading" id="gSj-Ph-zfa"/>
+                            <constraint firstItem="Izg-bU-daY" firstAttribute="trailing" secondItem="HoK-xc-3Qi" secondAttribute="trailing" id="j4q-HI-YGg"/>
+                            <constraint firstItem="Izg-bU-daY" firstAttribute="bottom" secondItem="HoK-xc-3Qi" secondAttribute="bottom" id="oJx-Ij-EW0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="HoK-xc-3Qi" id="uxt-Ph-ypL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXj-Mt-W2Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2764" y="4"/>
+        </scene>
+        <!--Transfer Detail View Controller-->
+        <scene sceneID="wTP-zV-Kco">
+            <objects>
+                <viewController storyboardIdentifier="TransferDetailViewController" id="SHl-Zy-OqC" customClass="TransferDetailViewController" customModule="SendMoney" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YrZ-0n-55L">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7v6-dQ-IkI">
+                                <rect key="frame" x="14" y="73" width="365" height="731"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fhY-v7-aQr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fhY-v7-aQr" firstAttribute="bottom" secondItem="7v6-dQ-IkI" secondAttribute="bottom" constant="14" id="42L-Ro-ocn"/>
+                            <constraint firstItem="7v6-dQ-IkI" firstAttribute="top" secondItem="fhY-v7-aQr" secondAttribute="top" constant="14" id="e6E-bc-42k"/>
+                            <constraint firstItem="7v6-dQ-IkI" firstAttribute="leading" secondItem="fhY-v7-aQr" secondAttribute="leading" constant="14" id="ojF-zm-qXr"/>
+                            <constraint firstItem="fhY-v7-aQr" firstAttribute="trailing" secondItem="7v6-dQ-IkI" secondAttribute="trailing" constant="14" id="xOx-jj-Zi6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="7v6-dQ-IkI" id="s9V-A2-nK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RXi-7m-KvS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3744" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C2Q-5L-ZWW">
@@ -170,6 +253,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
