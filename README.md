@@ -47,6 +47,11 @@ The app follows **MVVM (Model-View-ViewModel)** architecture, which provides a c
 
 4. **Details Screen**:
    - Displays the details of the selected form in a **formatted JSON**.
+  
+### Custom Reusable UI Components
+- **FormOptionsView**: A reusable UI component used to display options in the form, allowing the user to select from a list of services or providers.
+- **FormTextFieldView**: A reusable UI component used for text input fields in the form, making it easy to create consistent input fields across the app.
+
 
 ### Libraries and Frameworks:
 - **Swift** (language)
@@ -59,3 +64,18 @@ The app follows **MVVM (Model-View-ViewModel)** architecture, which provides a c
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/your-username/SendMoney-iOS.git
+   
+### Screenshots:
+![Simulator Screenshot - iPhone 14 Pro - 2025-01-19 at 20 50 19](https://github.com/user-attachments/assets/a500a2d5-4162-4fca-832a-5cf20cfec94d)
+![Simulator Screenshot - iPhone 14 Pro - 2025-01-19 at 20 50 48](https://github.com/user-attachments/assets/1010d469-ad90-424a-9ea3-e92988acb2b3)
+![Simulator Screenshot - iPhone 14 Pro - 2025-01-19 at 20 51 10](https://github.com/user-attachments/assets/28ee3d16-ce49-447f-82ee-39875364cc60)
+![Simulator Screenshot - iPhone 14 Pro - 2025-01-19 at 20 51 16](https://github.com/user-attachments/assets/3e95f2b4-e751-4129-9e4a-f00fcef597c7)
+![Simulator Screenshot - iPhone 14 Pro - 2025-01-19 at 20 51 27](https://github.com/user-attachments/assets/26585f46-fdb6-4953-8596-4c18cea1e2d8)
+
+
+### Demo:
+![Simulator Screen Recording - iPhone 14 Pro - 2025-01-19 at 20 59 13](https://github.com/user-attachments/assets/b767f130-9364-4e6b-bd15-0159ec9d536b)
+
+
+
+   
