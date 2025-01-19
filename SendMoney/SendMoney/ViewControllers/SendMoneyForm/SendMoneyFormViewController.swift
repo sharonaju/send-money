@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate, CustomPickerDelegate {
+class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDelegate, UITableViewDelegate, UITableViewDataSource, FormOptionsViewDelegate, UITextFieldDelegate, CustomPickerDelegate, FormTextFieldViewDelegate {
     
     @IBOutlet weak var submitButton: BaseButton!
     @IBOutlet weak var tableView: UITableView!
@@ -46,32 +46,39 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         viewModel.fetchFormData()
     }
 
+    override func refreshUI() {
+        super.refreshUI()
+        viewModel.createViewData(shouldValidateForm: false)
+    }
+    
     func registerTableView() {
         tableView.register(UINib(nibName: "FormOptionsTableViewCell", bundle: nil), forCellReuseIdentifier: FormOptionsTableViewCell.reuseIdentifier)
         tableView.register(UINib(nibName: "FormTextFieldTableViewCell", bundle: nil), forCellReuseIdentifier: FormTextFieldTableViewCell.reuseIdentifier)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-           guard let userInfo = notification.userInfo,
-                 let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-           
-           let keyboardHeight = keyboardFrame.height
-           let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-           
-           tableView.contentInset = contentInset
-           tableView.scrollIndicatorInsets = contentInset
-       }
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
+        let keyboardHeight = keyboardFrame.height
+        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        tableView.contentInset = contentInset
+        tableView.scrollIndicatorInsets = contentInset
+    }
     @objc func keyboardWillHide(_ notification: Notification) {
-            let contentInset = UIEdgeInsets.zero
-            tableView.contentInset = contentInset
-            tableView.scrollIndicatorInsets = contentInset
-        }
+        let contentInset = UIEdgeInsets.zero
+        tableView.contentInset = contentInset
+        tableView.scrollIndicatorInsets = contentInset
+    }
     // MARK: - SendMoneyFormViewModelDelegate
-    func loadSendMoneyFormData(data: [Any]?) {
+    func loadSendMoneyFormData(data: [Any]?, isValidData: Bool?) {
         navBarTitle = viewModel.sendMoneyData?.title?.en ?? LocalizedString.sendMoneyApp.localized
         self.data = data
         tableView.reloadData()
+        if isValidData == true {
+            
+        }
     }
+    
     
     // MARK: - UITableViewDelegate, UITableViewDataSource
     
@@ -90,14 +97,14 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
         if let cellModel = cellData as? FormTextFieldTableViewCellModel{
             let cell = tableView.dequeueReusableCell(withIdentifier: FormTextFieldTableViewCell.reuseIdentifier, for: indexPath) as! FormTextFieldTableViewCell
             cell.data = cellModel
-            cell.formTextFieldView.textField.delegate = self
+            cell.formTextFieldView.delegate = self
             return cell
         }
         return UITableViewCell()
     }
     
     // MARK: - FormOptionsViewDelegate
-    func didSelectShowOptions(type: FormOptionsType?, requiredField: RequiredField?) {
+    func didSelectShowOptions(type: FormOptionsType?, requiredField: RequiredFieldValue?) {
         if let selectedType = type {
             switch selectedType {
             case .service:
@@ -109,7 +116,7 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
                     showPicker(data: providers, type: .providers)
                 }
             case .requiredField:
-                if let requiredField = requiredField {
+                if let requiredField = requiredField?.requiredField {
                     showPicker(data: [requiredField], type: .options)
                 }
             }
@@ -118,7 +125,7 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
     
     // MARK: - IBActions
     @IBAction func sendAction(_ sender: Any) {
-        print("save action")
+        viewModel.createViewData(shouldValidateForm: true)
     }
     
     // MARK: - Picker Display
@@ -138,19 +145,36 @@ class SendMoneyFormViewController: BaseViewController, SendMoneyFormViewModelDel
             case let service as Service:
                 viewModel.formInputValue.selectedService = service
                 viewModel.formInputValue.selectedProvider = nil
-                viewModel.createViewData()
             case let provider as Provider:
                 viewModel.formInputValue.selectedProvider = provider
                 viewModel.formInputValue.requiredFields = nil
-                viewModel.createViewData()
+                if let reqFields = provider.requiredFields {
+                    viewModel.formInputValue.requiredFields = [RequiredFieldValue]()
+                    for item in reqFields {
+                        let reqFieldValue = RequiredFieldValue(requiredField: item, valueString: nil, valueOption: nil)
+                        viewModel.formInputValue.requiredFields?.append(reqFieldValue)
+                    }
+                }
             case let inputValue as RequiredFieldValue:
-                viewModel.formInputValue.requiredFields?.append(inputValue)
-                viewModel.createViewData()
+                viewModel.updateRequiredFieldValue(reqFieldValue: inputValue)
             default:
                 break
             }
-            
+            viewModel.createViewData(shouldValidateForm: false)
         }
+    // MARK: - FormTextFieldViewDelegate
+    func formTextFieldShouldReturn(type: FormTextFieldView.ViewType?) {
+        
+    }
+    func formTextFieldDidBeginEditing(type: FormTextFieldView.ViewType?) {
+    }
+    func formTextFieldDidEndEditing(text: String?, requiredFieldValue: RequiredFieldValue?, type: FormTextFieldView.ViewType?) {
+        if let inputValue = requiredFieldValue {
+            viewModel.updateRequiredFieldValue(reqFieldValue: inputValue)
+        }
+    }
+    
+    
     /*
      // MARK: - Navigation
      

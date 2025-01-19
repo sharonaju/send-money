@@ -18,4 +18,8 @@ extension String {
         }
         return String(Array(self).prefix(upTo: n))
     }
+    func validateForm(regex: String) -> Bool {
+        return NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: self)
+    }
+    
 }

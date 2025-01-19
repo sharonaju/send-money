@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pow-at-wMz">
-                                <rect key="frame" x="0.0" y="83" width="393" height="735"/>
+                                <rect key="frame" x="0.0" y="83" width="393" height="657"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -137,7 +137,7 @@
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="trailing" secondItem="Pow-at-wMz" secondAttribute="trailing" id="OXj-Ek-OTq"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="top" secondItem="d8L-kn-oxv" secondAttribute="top" constant="24" id="OgU-VN-bFA"/>
                             <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="1fD-6Y-OlF" secondAttribute="bottom" constant="20" id="i1c-Dz-KJR"/>
-                            <constraint firstItem="d8L-kn-oxv" firstAttribute="bottom" secondItem="Pow-at-wMz" secondAttribute="bottom" id="p0K-8i-CTh"/>
+                            <constraint firstItem="1fD-6Y-OlF" firstAttribute="top" secondItem="Pow-at-wMz" secondAttribute="bottom" constant="14" id="rto-RU-C42"/>
                             <constraint firstItem="Pow-at-wMz" firstAttribute="leading" secondItem="d8L-kn-oxv" secondAttribute="leading" id="xcJ-zf-fch"/>
                         </constraints>
                     </view>

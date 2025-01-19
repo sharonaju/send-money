@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FormOptionsView" customModule="SendMoney" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="6KI-0x-Jnj"/>
+                <outlet property="errorLabel" destination="yRo-vx-umr" id="YTc-iK-PMc"/>
                 <outlet property="formFieldView" destination="J64-lv-Yfb" id="hP2-4n-6T1"/>
                 <outlet property="selectedTitleLabel" destination="vW5-1W-P1Y" id="Akh-g2-978"/>
                 <outlet property="titleLabel" destination="XQ0-Hj-TwR" id="eE8-s9-lu7"/>
@@ -17,23 +18,26 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+            <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="zSs-5J-OYx">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQ0-Hj-TwR" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="25"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="20.333333333333332"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20.329999999999998" id="D13-Y4-83h"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J64-lv-Yfb">
-                            <rect key="frame" x="0.0" y="29" width="393" height="44"/>
+                            <rect key="frame" x="0.0" y="24.333333333333329" width="393" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW5-1W-P1Y" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
-                                    <rect key="frame" x="14" y="11.999999999999998" width="365" height="20.333333333333329"/>
+                                    <rect key="frame" x="14" y="11.66666666666667" width="365" height="20.333333333333329"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -59,6 +63,12 @@
                                 <constraint firstItem="vW5-1W-P1Y" firstAttribute="leading" secondItem="J64-lv-Yfb" secondAttribute="leading" constant="14" id="u8u-rY-5lX"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRo-vx-umr" customClass="BaseLabel" customModule="SendMoney" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="72.333333333333329" width="393" height="17.666666666666671"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </stackView>
             </subviews>

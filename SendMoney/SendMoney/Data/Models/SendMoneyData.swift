@@ -34,7 +34,7 @@ struct Provider: Codable {
     }
 }
 // MARK: - RequiredField
-struct RequiredField: Codable {
+struct RequiredField: Codable, Equatable {
     let label: Title?
     let name: String?
     let placeholder: Title?
@@ -52,16 +52,16 @@ struct RequiredField: Codable {
     }
 }
 // MARK: - Title
-struct Title: Codable {
+struct Title: Codable, Equatable {
     let en, ar: String?
 }
 
 // MARK: - Option
-struct Option: Codable {
+struct Option: Codable, Equatable {
     let label, name: String?
 }
 
-enum TypeEnum: String, Codable {
+enum TypeEnum: String, Codable, Equatable {
     case msisdn = "msisdn"
     case number = "number"
     case option = "option"

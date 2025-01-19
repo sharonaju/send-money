@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: BaseViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController, FormTextFieldViewDelegate {
     
     // MARK: - @IBOutlets
     @IBOutlet weak var sendMoneyLabel: BaseLabel!
@@ -50,8 +50,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         passwordFieldView.textField.text = Constants.validPassword
     }
     func connectDelegates(){
-        emailFieldView.textField.delegate = self
-        passwordFieldView.textField.delegate = self
+        emailFieldView.delegate = self
+        passwordFieldView.delegate = self
     }
     
     // MARK: - @IBActions
@@ -67,25 +67,26 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         navigateToSendMoneyView()
     }
     
-    // MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailFieldView.textField{
-            passwordFieldView.textField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return true
-    }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        emailFieldView.hideError()
-        passwordFieldView.hideError()
-    }
-    
     // MARK: - Navigations
     func navigateToSendMoneyView(){
         if let nextVC = storyboard?.instantiateViewController(withIdentifier: "SendMoneyFormViewController") as? SendMoneyFormViewController {
             navigationController?.pushViewController(nextVC, animated: true)
         }
+    }
+    // MARK: - FormTextFieldViewDelegate
+    func formTextFieldShouldReturn(type: FormTextFieldView.ViewType?) {
+        if type == .email{
+            passwordFieldView.textField.becomeFirstResponder()
+        } else {
+            passwordFieldView.textField.resignFirstResponder()
+        }
+    }
+    func formTextFieldDidBeginEditing(type: FormTextFieldView.ViewType?) {
+        emailFieldView.hideError()
+        passwordFieldView.hideError()
+    }
+    func formTextFieldDidEndEditing(text: String?, requiredFieldValue: RequiredFieldValue?, type: FormTextFieldView.ViewType?) {
+        
     }
 
 }

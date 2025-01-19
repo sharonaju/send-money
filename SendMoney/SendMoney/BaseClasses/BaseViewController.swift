@@ -68,7 +68,7 @@ class BaseViewController: UIViewController {
         refreshUI()
     }
     
-    @objc private func refreshUI() {
+    @objc func refreshUI() {
         self.title = LocalizedString.signin.localized
         view.setNeedsLayout()
     }

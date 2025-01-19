@@ -11,9 +11,26 @@ struct FormTextFieldViewModel{
     var title: String?
     var textfieldPlaceHolder: String?
     var textFieldKeybordType: UIKeyboardType?
+    var textFieldValue: String?
+    var requiredField: RequiredFieldValue?
+    var type: FormTextFieldView.ViewType?
+    var errorMessage: String?
 }
 
-class FormTextFieldView: UIView {
+protocol FormTextFieldViewDelegate {
+    func formTextFieldDidBeginEditing(type: FormTextFieldView.ViewType?)
+    func formTextFieldShouldReturn(type: FormTextFieldView.ViewType?)
+    func formTextFieldDidEndEditing(text: String?, requiredFieldValue: RequiredFieldValue?, type: FormTextFieldView.ViewType?)
+}
+
+class FormTextFieldView: UIView, UITextFieldDelegate {
+    
+    enum ViewType{
+        case email
+        case password
+        case form
+    }
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var errorLabel: BaseLabel!
     @IBOutlet weak var textField: BaseTextField!
@@ -29,6 +46,7 @@ class FormTextFieldView: UIView {
             showError()
         }
     }
+    var delegate: FormTextFieldViewDelegate?
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         Bundle.main.loadNibNamed("FormTextFieldView", owner: self, options: nil)
@@ -59,7 +77,7 @@ class FormTextFieldView: UIView {
     func showError(){
         textField.layer.borderWidth = 1
         textField.layer.borderColor = CustomColors.errorColor.cgColor
-        errorLabel.text = errorMessage
+        errorLabel.text = errorMessage ?? data?.errorMessage
     }
     func hideError() {
         textField.layer.borderWidth = 0
@@ -73,8 +91,51 @@ class FormTextFieldView: UIView {
         } else{
             titleLabel.isHidden = true
         }
+        if let reqFormDataType = data?.requiredField?.requiredField?.type{
+            switch reqFormDataType {
+            case .msisdn:
+                textField.keyboardType = .phonePad
+            case .number:
+                textField.keyboardType = .numbersAndPunctuation
+            case .text:
+                textField.keyboardType = .default
+            default:
+                break
+            }
+        } else{
+            textField.keyboardType = data?.textFieldKeybordType ?? .default
+        }
         textField.placeholder = data?.textfieldPlaceHolder
-        textField.keyboardType = data?.textFieldKeybordType ?? .default
+        
+        if let textFieldValue = data?.textFieldValue{
+            textField.text = textFieldValue
+        } else{
+            textField.text = nil
+        }
+        if let errorMessage = data?.errorMessage {
+            showError()
+        } else{
+            hideError()
+        }
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.formTextFieldDidBeginEditing(type: data?.type)
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let type = data?.type {
+            switch type {
+            case .email, .password:
+                delegate?.formTextFieldDidEndEditing(text: textField.text, requiredFieldValue: nil, type: type)
+            case .form:
+                let reqFieldValue = RequiredFieldValue(requiredField: data?.requiredField?.requiredField, valueString: textField.text, valueOption: nil)
+                delegate?.formTextFieldDidEndEditing(text: textField.text, requiredFieldValue: reqFieldValue, type: type)
+            }
+        }
+       
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.formTextFieldShouldReturn(type: data?.type)
+        return true
     }
 
 }
